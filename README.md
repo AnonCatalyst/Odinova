@@ -56,7 +56,6 @@ Scavenger is a Python-based Open Source Intelligence (OSINT) tool designed to pe
 **Information Obtained**
     Discover online mentions of a query or username.
     Identify potential social profiles and forums.
-    Enhance web searches with SerpApi for more accurate results.
 
 **Why Ominis?**
     Ominis offers a unified solution for multiple OSINT tasks.
