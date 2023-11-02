@@ -1,0 +1,6 @@
+httpx
+beautifulsoup4
+fake_useragent
+PyQt5
+urllib3
+asyncio
