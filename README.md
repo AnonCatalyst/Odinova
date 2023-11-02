@@ -4,8 +4,8 @@ Scavenger is a Python-based Open Source Intelligence (OSINT) tool designed to pe
 
 🚀 Happy OSINTing! 🕵️‍♂️
 
-<img src="img/screenshot.png" alt="Scavenger GUI Project - screenshot" width="500" height="500"/>
-<img src="img/screenshot2.png" alt="Scavenger GUI Project - screenshot" width="500" height="500"/>
+<img src="img/screenshot.png" alt="Scavenger GUI Project - screenshot" width="550" height="300"/>
+<img src="img/screenshot2.png" alt="Scavenger GUI Project - screenshot" width="550" height="300"/>
 
 ## Features
 
