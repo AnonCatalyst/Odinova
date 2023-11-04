@@ -44,6 +44,10 @@ class WebSearchGUI(QWidget):
         # Set the initial status to "Inactive"
         self.set_status_icon("Inactive: ", "❌")
 
+        # Create the event loop once
+        self.loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(self.loop)
+
         self.init_ui()
 
     def init_ui(self):
@@ -116,23 +120,20 @@ class WebSearchGUI(QWidget):
         search_button.setStyleSheet("background-color: black; color: #FF0000; border: 1px solid #000000;")
 
     def run_search(self):
-        self.set_status_icon("Running: ",  "🔰")#ange status to warning sign at the start
+        self.set_status_icon("Running: ", "🔰")
 
         self.query = self.query_input.text()
         num_results = int(self.num_results_input.text()) if self.num_results_input.text().isdigit() else 10
 
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
-
         try:
-            loop.run_until_complete(self.main_async(num_results))
+            self.loop.run_until_complete(self.main_async(num_results))
         except Exception as e:
-            #self.set_status_icon("Inactive: ", " ⚠️" )#Change status to red X on error
             print("Error during search:", e)
+            self.set_status_icon("Inactive: ", "❌")
         else:
-            self.set_status_icon("Finished: ", "🔱") # Change status to green checkmark on success
-        finally:
-            loop.close()
+            self.set_status_icon("Finished: ", "🔱")
+        #finally:
+            # No need to close the loop here
 
     def set_status_icon(self, text, icon):
         full_text = f"{text} {icon}"
@@ -233,7 +234,7 @@ class WebSearchGUI(QWidget):
                             if mention_count > 0:
                                 # Black color for detection messages
                                 detection_text = f"   🚨 '{self.query}' Detected in Title/Url: {url}"
-                                self.result_text.setStyleSheet("color: black; background-color: #303030; border: 1px solid #FF0000;")
+                                self.result_text.setStyleSheet("color: white; background-color: #303030; border: 1px solid #FF0000;")
                                 self.result_text.append(detection_text)
 
                                 # Add to social profiles text
