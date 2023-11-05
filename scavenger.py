@@ -36,6 +36,8 @@ class WebSearchGUI(QWidget):
         self.error_text = QTextEdit()
         self.social_profiles_text = QTextEdit()
         self.forum_pages_text = QTextEdit()
+        self.mentions_text = QTextEdit()  # New QTextEdit widget for mentions
+        self.actions_text = QTextEdit()  # New QTextEdit widget for actions
         self.query_input = QLineEdit()
         self.num_results_input = QLineEdit()
         self.status_label = QLabel("❌")  # Initial status: Red X
@@ -58,35 +60,45 @@ class WebSearchGUI(QWidget):
         # Create a tab widget
         tabs = QTabWidget()
 
-        # Create tabs for results, errors, social profiles, forum pages
+        # Create tabs for results, errors, social profiles, forum pages, mentions, and actions
         results_tab = QWidget()
         errors_tab = QWidget()
         social_profiles_tab = QWidget()
         forum_pages_tab = QWidget()
+        mentions_tab = QWidget()  # New tab for mentions
+        actions_tab = QWidget()  # New tab for actions
 
         # Add the tabs to the tab widget
         tabs.addTab(results_tab, "Results")
         tabs.addTab(errors_tab, "Errors")
         tabs.addTab(social_profiles_tab, "Social Profiles")
         tabs.addTab(forum_pages_tab, "Forum Pages")
+        tabs.addTab(mentions_tab, "Mentions")  # Add the mentions tab
+        tabs.addTab(actions_tab, "Logging")  # Add the actions tab
 
         # Set layouts for tabs
         results_layout = QVBoxLayout(results_tab)
         errors_layout = QVBoxLayout(errors_tab)
         social_profiles_layout = QVBoxLayout(social_profiles_tab)
         forum_pages_layout = QVBoxLayout(forum_pages_tab)
+        mentions_layout = QVBoxLayout(mentions_tab)  # Layout for the mentions tab
+        actions_layout = QVBoxLayout(actions_tab)  # Layout for the actions tab
 
         # Add widgets to the layouts
         results_layout.addWidget(self.result_text)
         errors_layout.addWidget(self.error_text)
         social_profiles_layout.addWidget(self.social_profiles_text)
         forum_pages_layout.addWidget(self.forum_pages_text)
+        mentions_layout.addWidget(self.mentions_text)  # Add the mentions text widget to the mentions layout
+        actions_layout.addWidget(self.actions_text)  # Add the actions text widget to the actions layout
 
         # Add layouts to the corresponding tabs
         results_tab.setLayout(results_layout)
         errors_tab.setLayout(errors_layout)
         social_profiles_tab.setLayout(social_profiles_layout)
         forum_pages_tab.setLayout(forum_pages_layout)
+        mentions_tab.setLayout(mentions_layout)  # Set the layout for the mentions tab
+        actions_tab.setLayout(actions_layout)  # Set the layout for the actions tab
 
         # Add the tab widget to the main layout
         layout.addWidget(tabs)
@@ -120,6 +132,8 @@ class WebSearchGUI(QWidget):
         search_button.setStyleSheet("background-color: black; color: #FF0000; border: 1px solid #000000;")
 
     def run_search(self):
+        self.log_action("Search started.")
+
         self.set_status_icon("Running: ", "🔰")
 
         self.query = self.query_input.text()
@@ -132,8 +146,8 @@ class WebSearchGUI(QWidget):
             self.set_status_icon("Inactive: ", "❌")
         else:
             self.set_status_icon("Finished: ", "🔱")
-        #finally:
-            # No need to close the loop here
+
+        self.log_action("Search finished.")
 
     def set_status_icon(self, text, icon):
         full_text = f"{text} {icon}"
@@ -145,12 +159,15 @@ class WebSearchGUI(QWidget):
 
     async def make_request_async(self, url):
         try:
+            self.log_action(f"Making request to {url}")
             headers = {"User-Agent": UserAgent().random}
             async with httpx.AsyncClient(timeout=30, headers=headers) as client:
                 response = await client.get(url)
                 response.raise_for_status()
+                self.log_action(f"Request successful: {url}")
                 return response.text
         except httpx.RequestError as e:
+            self.log_action(f"Error making request to {url}: {e}")
             self.error_text.setStyleSheet("color: #FF0000;")
             self.error_text.append(f"Error making request to {url}: {e}")
             raise GoogleSearchError(f"Error making request to {url}: {e}")
@@ -190,6 +207,8 @@ class WebSearchGUI(QWidget):
         self.error_text.clear()
         self.social_profiles_text.clear()
         self.forum_pages_text.clear()
+        self.mentions_text.clear()  # Clear mentions tab
+        self.actions_text.clear()  # Clear actions tab
 
         retry_count = 0
 
@@ -240,6 +259,9 @@ class WebSearchGUI(QWidget):
                                 # Add to social profiles text
                                 self.add_social_profile(index, url)
 
+                                # Log the mention in the mentions tab
+                                self.mentions_text.append(f"Mention in result {index}: {url}")
+
                             social_profiles = self.find_social_profiles(url)
                             if social_profiles:
                                 for profile in social_profiles:
@@ -255,6 +277,7 @@ class WebSearchGUI(QWidget):
                     await asyncio.sleep(5)
 
     def add_social_profile(self, index, profile_url):
+        # Check if the full URL is not in found_social_profiles
         if profile_url not in found_social_profiles:
             if "forum" in profile_url.lower():
                 # Add to forum pages text
@@ -266,6 +289,25 @@ class WebSearchGUI(QWidget):
                 self.social_profiles_text.setStyleSheet("color: #00FF00; background-color: #303030; border: 1px solid #FF0000;")
                 self.social_profiles_text.append(f"🌐 {index}. {profile_url}")
             found_social_profiles.add(profile_url)
+
+            # Log the action in the actions tab
+            self.log_action(f"Identified social profile: {profile_url}")
+
+        # Track the index and URL in a dictionary
+        url_index_dict = {url: index for url in found_social_profiles}
+
+        # Clear the found_social_profiles set
+        found_social_profiles.clear()
+
+        # Update found_social_profiles with the unique URLs
+        found_social_profiles.update(url_index_dict)
+
+
+
+    def log_action(self, action):
+        # Log an action in the actions tab
+        self.actions_text.append(action)
+        QApplication.processEvents()  # Allow the GUI to handle events
 
 
 if __name__ == '__main__':
