@@ -22,8 +22,22 @@ from PyQt5.QtWebEngineWidgets import QWebEngineSettings
 import serpapi
 from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEnginePage
 from PyQt5.QtCore import QUrl
-from PyQt5.QtMultimedia import QMediaPlayer, QMediaPlaylist
+import time
 
+
+def print_animation(message, delay=0.1):
+    for char in message:
+        print(char, end='', flush=True)
+        time.sleep(0.01)
+
+def welcome_animation():
+    print_animation("\033[1;32mW\033[1;33mE\033[1;34mL\033[1;35mC\033[1;36mO\033[1;37mE\033[1;31m \033[1;32mT\033[1;33mO\033[1;34m \033[1;35mS\033[1;36mC\033[1;37mA\033[1;31mV\033[1;32mE\033[1;33mN\033[1;34mG\033[1;35mE\033[1;36mR\033[1;37m \033[1;31mO\033[1;32mS\033[1;33mI\033[1;34mN\033[1;35mT\033[1;36m \033[1;37mG\033[1;31mU\033[1;32mI\033[1;33m ! \033[0m")
+    #time.sleep(1)
+    print_animation("\033[2K")  # Clear the line
+    print_animation("\033[1;36mH\033[1;37mA\033[1;31mP\033[1;32mP\033[1;33mY\033[1;34m \033[1;35mO\033[1;36mS\033[1;37mI\033[1;31mN\033[1;32mT\033[1;33mI\033[1;34mN\033[1;35mG\033[1;36m ! \033[0m")
+
+if __name__ == "__main__":
+    welcome_animation()
 
 
 # Disable urllib3 warnings
@@ -52,19 +66,27 @@ class MainApp(QWidget):
 
         layout = QVBoxLayout()
         
-        # Create a QMediaPlayer instance
-        self.media_player = QMediaPlayer()
-
-        # Mute the audio
-        self.media_player.setMuted(True)
 
         # Create a side menu with buttons
         side_menu_layout = QVBoxLayout()
         side_menu_layout.setAlignment(Qt.AlignTop)
         side_menu_layout.setContentsMargins(0, 0, 0, 0)  # Set margins to zero
 
-        home_button = QPushButton("Threat Map")
-        home_button.clicked.connect(self.show_home)
+
+        # Load the custom image
+        custom_image_path = 'src/co2.png'
+        custom_image = QtGui.QPixmap(custom_image_path)
+
+
+        # Create a QLabel to display the custom image
+        custom_image_label = QLabel()
+        custom_image_label.setPixmap(custom_image.scaledToWidth(50))  # Set a fixed width (adjust as needed)
+        custom_image_label.setAlignment(Qt.AlignCenter)  # Center the image
+
+
+        # Create the Threat Map button
+        threat_map_button = QPushButton("Threat Map")
+        threat_map_button.clicked.connect(self.show_home)
 
         web_search_button = QPushButton("Web Search")
         web_search_button.clicked.connect(self.show_web_search)
@@ -72,14 +94,16 @@ class MainApp(QWidget):
         serpapi_button = QPushButton("Serpapi")
         serpapi_button.clicked.connect(self.show_serpapi_search)
 
-        side_menu_layout.addWidget(home_button)
+        side_menu_layout.addWidget(custom_image_label)  # Add the image label
+        side_menu_layout.addWidget(threat_map_button)
         side_menu_layout.addWidget(web_search_button)
         side_menu_layout.addWidget(serpapi_button)
 
         # Add a line border on the right side of the side menu
         side_menu_widget = QWidget()
         side_menu_widget.setLayout(side_menu_layout)
-        side_menu_widget.setStyleSheet("border-right: 1px solid red;")  # Darker gray line border
+        side_menu_widget.setStyleSheet("border-right: 1px solid #222222;")  # Darker gray line border
+
 
 
         # Create a stacked widget to manage different views
@@ -112,6 +136,7 @@ class MainApp(QWidget):
         self.stacked_widget.addWidget(serpapi_view)
         self.stacked_widget.setCurrentWidget(serpapi_view)
 
+
     def setup_home_view(self):
         home_view = QWidget()
         home_layout = QVBoxLayout()
@@ -119,10 +144,6 @@ class MainApp(QWidget):
 
         # Load the web page into a QWebEngineView with adjusted size
         web_engine_view = QWebEngineView()
-
-        # Disable audio by setting AutoLoadImages to False
-        settings = web_engine_view.settings()
-        settings.setAttribute(QWebEngineSettings.AutoLoadImages, False)
 
         web_engine_view.setUrl(QUrl("https://threatbutt.com/map/"))
         home_layout.addWidget(web_engine_view)
