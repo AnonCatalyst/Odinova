@@ -11,6 +11,20 @@ from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLa
 from PyQt5.QtCore import Qt
 from PyQt5 import QtGui
 from PyQt5.QtGui import QPalette
+from PyQt5.QtWidgets import QStackedWidget, QStackedLayout, QSizePolicy
+from PyQt5.QtWebEngineWidgets import QWebEngineView
+from PyQt5.QtCore import QUrl
+from PyQt5.QtWidgets import QSpacerItem, QSizePolicy
+from PyQt5.QtWidgets import QMessageBox
+from PyQt5.QtWidgets import QPushButton, QHBoxLayout
+from PyQt5.QtCore import QThread, pyqtSignal
+from PyQt5.QtWebEngineWidgets import QWebEngineSettings
+import serpapi
+from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEnginePage
+from PyQt5.QtCore import QUrl
+from PyQt5.QtMultimedia import QMediaPlayer, QMediaPlaylist
+
+
 
 # Disable urllib3 warnings
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -26,6 +40,201 @@ found_forum_pages = set()
 class GoogleSearchError(Exception):
     pass
 
+
+class MainApp(QWidget):
+    def __init__(self):
+        super().__init__()
+
+        self.init_ui()
+
+    def init_ui(self):
+        self.setGeometry(105, 100, 1100, 600)  # Set the initial window size
+
+        layout = QVBoxLayout()
+        
+        # Create a QMediaPlayer instance
+        self.media_player = QMediaPlayer()
+
+        # Mute the audio
+        self.media_player.setMuted(True)
+
+        # Create a side menu with buttons
+        side_menu_layout = QVBoxLayout()
+        side_menu_layout.setAlignment(Qt.AlignTop)
+        side_menu_layout.setContentsMargins(0, 0, 0, 0)  # Set margins to zero
+
+        home_button = QPushButton("Threat Map")
+        home_button.clicked.connect(self.show_home)
+
+        web_search_button = QPushButton("Web Search")
+        web_search_button.clicked.connect(self.show_web_search)
+
+        serpapi_button = QPushButton("Serpapi")
+        serpapi_button.clicked.connect(self.show_serpapi_search)
+
+        side_menu_layout.addWidget(home_button)
+        side_menu_layout.addWidget(web_search_button)
+        side_menu_layout.addWidget(serpapi_button)
+
+        # Add a line border on the right side of the side menu
+        side_menu_widget = QWidget()
+        side_menu_widget.setLayout(side_menu_layout)
+        side_menu_widget.setStyleSheet("border-right: 1px solid red;")  # Darker gray line border
+
+
+        # Create a stacked widget to manage different views
+        self.stacked_widget = QStackedWidget()
+
+        # Add the side menu and stacked widget to the main layout
+        main_layout = QHBoxLayout()
+        main_layout.addWidget(side_menu_widget)
+        main_layout.addWidget(self.stacked_widget)
+
+        layout.addLayout(main_layout)
+
+        # Set up the web search and home views
+        self.setup_web_search_view()
+        self.setup_home_view()
+
+        self.setLayout(layout)
+        self.setWindowTitle("Scavenger - Osint Tool")
+        self.show_web_search()  # Show the web search view by default
+
+
+
+    def setup_web_search_view(self):
+        web_search_view = WebSearchGUI()
+        self.stacked_widget.addWidget(web_search_view)
+        
+
+    def show_serpapi_search(self):
+        serpapi_view = SerpapiSearchGUI()
+        self.stacked_widget.addWidget(serpapi_view)
+        self.stacked_widget.setCurrentWidget(serpapi_view)
+
+    def setup_home_view(self):
+        home_view = QWidget()
+        home_layout = QVBoxLayout()
+        home_view.setLayout(home_layout)
+
+        # Load the web page into a QWebEngineView with adjusted size
+        web_engine_view = QWebEngineView()
+
+        # Disable audio by setting AutoLoadImages to False
+        settings = web_engine_view.settings()
+        settings.setAttribute(QWebEngineSettings.AutoLoadImages, False)
+
+        web_engine_view.setUrl(QUrl("https://threatbutt.com/map/"))
+        home_layout.addWidget(web_engine_view)
+
+        self.stacked_widget.addWidget(home_view)
+
+        
+    def show_web_search(self):
+        self.stacked_widget.setCurrentIndex(0)
+
+    def show_home(self):
+        self.stacked_widget.setCurrentIndex(1)
+
+
+
+class SerpapiSearchThread(QThread):
+    search_finished = pyqtSignal(str)
+
+    def __init__(self, token, query):
+        super().__init__()
+        self.token = token
+        self.query = query
+
+    def run(self):
+        results = self.perform_serpapi_search(self.token, self.query)
+        self.search_finished.emit(results)
+
+    def perform_serpapi_search(self, token, query):
+        params = {
+            'api_key': token,
+            'q': query,
+            'json': 1,
+        }
+
+        search = serpapi.GoogleSearch(params)
+        results = search.get_dict()
+
+        return json.dumps(results, indent=2)
+
+
+class SerpapiSearchGUI(QWidget):
+    def __init__(self):
+        super().__init__()
+
+        self.token_input = QLineEdit()
+        self.query_input = QLineEdit()
+        self.result_text = QTextEdit()
+
+        # Create an instance of the thread
+        self.search_thread = SerpapiSearchThread("", "")
+        self.search_thread.search_finished.connect(self.display_serpapi_results)
+
+        self.init_ui()
+
+    def init_ui(self):
+        layout = QVBoxLayout()
+
+        label_token = QLabel("Enter your Serpapi Token:")
+        layout.addWidget(label_token)
+        layout.addWidget(self.token_input)
+
+        label_query = QLabel("Enter your search query:")
+        layout.addWidget(label_query)
+        layout.addWidget(self.query_input)
+
+        search_button = QPushButton("Search with Serpapi")
+        search_button.clicked.connect(self.run_serpapi_search)
+        layout.addWidget(search_button)
+        layout.addWidget(self.result_text)
+
+        # Add a Save button
+        save_button = QPushButton("Save API Key")
+        save_button.clicked.connect(self.save_api_key)
+        layout.addWidget(save_button)
+
+        self.setLayout(layout)
+
+        # Set the background color and border style for the input boxes
+        for input_box in [self.token_input, self.query_input]:
+            input_box.setStyleSheet("background-color: #303030; color: white; border: 1px solid #FF0000;")
+
+        # Set the background color, text color, and border style for the result box
+        self.result_text.setStyleSheet("background-color: #303030; color: white; border: 1px solid #FF0000;")
+
+    def save_api_key(self):
+        api_key = self.token_input.text()
+
+        if api_key:
+            with open("src/serpapi_api_key.json", "w") as json_file:
+                json.dump({"api_key": api_key}, json_file)
+                QMessageBox.information(self, "Success", "API Key saved successfully.")
+        else:
+            QMessageBox.warning(self, "Warning", "Please enter the Serpapi Token before saving.")
+        
+    def run_serpapi_search(self):
+        token = self.token_input.text()
+        query = self.query_input.text()
+
+        if not token or not query:
+            QMessageBox.warning(self, "Warning", "Please enter both Serpapi Token and search query.")
+            return
+
+        # Set the token and query for the search thread
+        self.search_thread.token = token
+        self.search_thread.query = query
+
+        # Start the search thread
+        self.search_thread.start()
+
+    def display_serpapi_results(self, results):
+        self.result_text.setPlainText(results)
+        
 
 class WebSearchGUI(QWidget):
     def __init__(self):
@@ -92,6 +301,11 @@ class WebSearchGUI(QWidget):
         mentions_layout.addWidget(self.mentions_text)  # Add the mentions text widget to the mentions layout
         actions_layout.addWidget(self.actions_text)  # Add the actions text widget to the actions layout
 
+        # Set the background color for the text boxes in all tabs
+        for text_edit in [self.result_text, self.error_text, self.social_profiles_text, self.forum_pages_text, self.mentions_text, self.actions_text]:
+            text_edit.setStyleSheet("background-color: #303030; color: white; border: 1px solid #FF0000;")
+
+
         # Add layouts to the corresponding tabs
         results_tab.setLayout(results_layout)
         errors_tab.setLayout(errors_layout)
@@ -132,7 +346,7 @@ class WebSearchGUI(QWidget):
         search_button.setStyleSheet("background-color: black; color: #FF0000; border: 1px solid #000000;")
 
     def run_search(self):
-        self.log_action("Search started.")
+        self.log_action("Google Search started.")
 
         self.set_status_icon("Running: ", "🔰")
 
@@ -142,12 +356,19 @@ class WebSearchGUI(QWidget):
         try:
             self.loop.run_until_complete(self.main_async(num_results))
         except Exception as e:
-            print("Error during search:", e)
+            print("Error during Google search:", e)
             self.set_status_icon("Inactive: ", "❌")
         else:
             self.set_status_icon("Finished: ", "🔱")
 
-        self.log_action("Search finished.")
+        self.log_action("Google Search finished.")
+
+
+    def alternative_forum_detection(self, url):
+        # Add your alternative forum detection logic here
+        # For example, check if the URL contains common forum software paths or patterns
+        forum_software_paths = ["phpbb", "vbulletin", "invision", "mybb"]
+        return any(path in url.lower() for path in forum_software_paths)
 
     def set_status_icon(self, text, icon):
         full_text = f"{text} {icon}"
@@ -186,7 +407,7 @@ class WebSearchGUI(QWidget):
         return profiles
 
     def is_potential_forum(self, url):
-        potential_forum_keywords = ["forum", "community", "discussion", "board", "chat", "hub"]
+        potential_forum_keywords = ["forum", "community", "discussion", "board", "chat", "hub", "messageboard", "forumdisplay", "bbs", "phpbb"]
         url_parts = urllib.parse.urlparse(url)
         path = url_parts.path.lower()
 
@@ -250,6 +471,14 @@ class WebSearchGUI(QWidget):
                             text_to_check = f"{title.text} {url}"
                             mention_count = self.extract_mentions(text_to_check, self.query)
 
+                            # Check for forums using the first method
+                            if self.is_potential_forum(url):
+                                self.add_forum_page(index, url)
+
+                            # Check for forums using the alternative method
+                            if self.alternative_forum_detection(url):
+                                self.add_forum_page(index, url)
+
                             if mention_count > 0:
                                 # Black color for detection messages
                                 detection_text = f"   🚨 '{self.query}' Detected in Title/Url: {url}"
@@ -310,6 +539,7 @@ class WebSearchGUI(QWidget):
         QApplication.processEvents()  # Allow the GUI to handle events
 
 
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     qp = QPalette()
@@ -321,6 +551,6 @@ if __name__ == '__main__':
     app.setStyle("Fusion")
     app.setWindowIcon(QtGui.QIcon('img/icon_photo.png'))
 
-    gui = WebSearchGUI()
-    gui.show()
+    main_app = MainApp()
+    main_app.show()
     sys.exit(app.exec_())

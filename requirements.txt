@@ -4,3 +4,5 @@ fake_useragent
 PyQt5
 urllib3
 asyncio
+PyQtWebEngine
+serpapi
