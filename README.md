@@ -1,5 +1,8 @@
 ># Scavenger Osint GUI 🌐🕵️‍♂️
 
+**UPDATE v1.5 is coming!**
+'Username Search - Proxy Chat - Home Window - Network,Sysinfo,contacts tabs - bug fixes
+
 Scavenger is a Python-based Open Source Intelligence (OSINT) tool designed to perform web searches and extract relevant information from search results. It is equipped with a graphical user interface (GUI) using PyQt5, making it user-friendly and accessible.
 
 🚀 Happy OSINTing! 🕵️‍♂️
