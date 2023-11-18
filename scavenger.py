@@ -145,7 +145,7 @@ class MainApp(QWidget):
         # Load the web page into a QWebEngineView with adjusted size
         web_engine_view = QWebEngineView()
 
-        web_engine_view.setUrl(QUrl("https://threatbutt.com/map/"))
+        web_engine_view.setUrl(QUrl("https://threatmap.bitdefender.com/"))
         home_layout.addWidget(web_engine_view)
 
         self.stacked_widget.addWidget(home_view)
