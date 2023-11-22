@@ -7,7 +7,7 @@ import urllib.parse
 import asyncio
 from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit, QPushButton, QTextEdit, QTabWidget
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QTabWidget, QPlainTextEdit
 from PyQt5.QtCore import Qt
 from PyQt5 import QtGui
 from PyQt5.QtGui import QPalette
@@ -23,22 +23,35 @@ import serpapi
 from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEnginePage
 from PyQt5.QtCore import QUrl
 import time
+from PyQt5.QtWidgets import QTextEdit
+from PyQt5.QtWidgets import QLineEdit
+import psutil
+
+from inf import get_system_info
+
+import subprocess
+import os
+from PyQt5.QtWidgets import QTextBrowser
+from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import QMainWindow, QDesktopWidget
+from src.usr import check_user_in_urls
+import requests
+from requests.exceptions import RequestException, ConnectionError, TooManyRedirects, SSLError
+from colorama import Fore
+
+os.system("clear")
 
 
-def print_animation(message, delay=0.1):
-    for char in message:
-        print(char, end='', flush=True)
-        time.sleep(0.01)
-
-def welcome_animation():
-    print_animation("\033[1;32mW\033[1;33mE\033[1;34mL\033[1;35mC\033[1;36mO\033[1;37mE\033[1;31m \033[1;32mT\033[1;33mO\033[1;34m \033[1;35mS\033[1;36mC\033[1;37mA\033[1;31mV\033[1;32mE\033[1;33mN\033[1;34mG\033[1;35mE\033[1;36mR\033[1;37m \033[1;31mO\033[1;32mS\033[1;33mI\033[1;34mN\033[1;35mT\033[1;36m \033[1;37mG\033[1;31mU\033[1;32mI\033[1;33m ! \033[0m")
-    #time.sleep(1)
-    print_animation("\033[2K")  # Clear the line
-    print_animation("\033[1;36mH\033[1;37mA\033[1;31mP\033[1;32mP\033[1;33mY\033[1;34m \033[1;35mO\033[1;36mS\033[1;37mI\033[1;31mN\033[1;32mT\033[1;33mI\033[1;34mN\033[1;35mG\033[1;36m ! \033[0m")
-
-if __name__ == "__main__":
-    welcome_animation()
-
+# Initialize UserAgent object
+user_agent = UserAgent()
+# Define headers with a fake user agent
+headers = {
+    'User-Agent': user_agent.random,
+    'Accept-Language': 'en-US,en;q=0.5',
+    # Add any other headers you may need
+}
+# Set up the 'header' variable
+header = headers
 
 # Disable urllib3 warnings
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -54,7 +67,150 @@ found_forum_pages = set()
 class GoogleSearchError(Exception):
     pass
 
+class UserSearchThread(QThread):
+    # Use a signal to communicate search results
+    search_result = pyqtSignal(str)
 
+    def __init__(self, username, url_list):  # Add url_list parameter
+        super().__init__()
+        self.username = username
+        self.url_list = url_list  # Assign the url_list parameter to the instance variable
+
+    def run(self):
+        for url in self.url_list:
+            url = urllib.parse.urljoin(url, self.username)
+            try:
+                s = requests.Session()
+                s.headers.update(headers)
+                response = s.get(url, allow_redirects=False, timeout=5)
+
+                if response.status_code == 200 and self.username.lower() in response.text.lower():
+                    result = f"• {self.username} | [✓] URL: {url} {response.status_code}"
+                    # Emit the search result through the signal
+                    self.search_result.emit(result)
+            except (ConnectionError, TooManyRedirects, RequestException, SSLError, TimeoutError):
+                # Ignore these specific exceptions
+                pass
+
+class UserSearchGUI(QWidget):
+    def __init__(self):
+        super().__init__()
+
+        self.username_input = QLineEdit()
+        self.result_text = QTextEdit()
+        self.search_thread = None  # Initialize search_thread as None
+
+        self.init_ui()
+
+    def init_ui(self):
+        layout = QVBoxLayout()
+
+        label_username = QLabel("Enter target username:")
+        layout.addWidget(label_username)
+        layout.addWidget(self.username_input)
+
+        search_button = QPushButton("- ᴄʟɪᴄᴋ ʜᴇʀᴇ ᴛᴏ ꜱᴛᴀʀᴛ -")
+        search_button.clicked.connect(self.run_user_search)
+        layout.addWidget(search_button)
+        layout.addWidget(self.result_text)
+
+        self.setLayout(layout)
+
+        for widget in [self.username_input, self.result_text]:
+            widget.setStyleSheet("background-color: #303030; color: white; border: 1px solid #FF0000;")
+
+    def run_user_search(self):
+        target_username = self.username_input.text()
+        if not target_username:
+            QMessageBox.warning(self, "Warning", "Please enter a target username.")
+            return
+
+        # Create an instance of the username search thread and pass the target_username and url_list
+        url_list = self.load_urls_from_file()
+        self.search_thread = UserSearchThread(target_username, url_list)
+        self.search_thread.search_result.connect(self.display_username_search_result)
+
+        # Start the search thread
+        self.search_thread.start()
+
+        self.display_username_search_result("Searching for user in URLs...")
+
+    def display_username_search_result(self, result):
+        self.result_text.append(result)
+
+    def load_urls_from_file(self):
+        try:
+            with open("src/urls.txt", "r") as f:
+                return [x.strip() for x in f.readlines()]
+        except FileNotFoundError:
+            QMessageBox.warning(self, "Warning", "URLs file (src/urls.txt) not found.")
+            return []
+
+
+class HomeWindow(QWidget):
+    def __init__(self):
+        super().__init__()
+
+        self.init_ui()
+
+        
+    def init_ui(self):
+        main_layout = QVBoxLayout()
+
+        # Create a QHBoxLayout for the widgets on the right side (image, name, and bio)
+        right_layout = QHBoxLayout()
+
+        # Create a QLabel for displaying the image
+        image_label = QLabel(self)
+        pixmap = QPixmap('img/discord.jpg')  # Replace 'img/profile_image.jpg' with the actual path to your image
+        pixmap = pixmap.scaledToWidth(100)  # Set the desired width
+        image_label.setPixmap(pixmap)
+        image_label.setAlignment(Qt.AlignCenter)  # Center the image
+
+        # Create a QVBoxLayout for the right side (name and bio)
+        text_layout = QVBoxLayout()
+
+        # Create a QLabel for displaying the name
+        name_label = QLabel('Scavenger Osint GUI')
+        name_label.setAlignment(Qt.AlignCenter)  # Center the text
+
+        # Create a QTextEdit for displaying the bio
+        bio_box = QTextEdit()
+        bio_box.setReadOnly(True)
+        bio_box.setStyleSheet("background-color: #303030; color: white; border: 1px solid #0000FF;")
+
+        # Read content from bio.txt file and set it to the bio box
+        try:
+            with open('src/bio.txt', 'r') as file:
+                bio_text = file.read()
+                bio_box.setPlainText(bio_text)
+        except FileNotFoundError:
+            bio_box.setPlainText("Bio file not found.")
+
+        # Add name and bio widgets to the text layout
+        text_layout.addWidget(name_label)
+        text_layout.addWidget(bio_box)
+
+        # Add image and text layout to the right layout
+        right_layout.addWidget(image_label)
+        right_layout.addLayout(text_layout)
+
+        # Add the right layout to the main layout
+        main_layout.addLayout(right_layout)
+
+        # Create a scrollable box for displaying system information
+        info_box = QPlainTextEdit()
+        info_box.setReadOnly(True)
+        info_box.setStyleSheet("background-color: #303030; color: white; border: 1px solid #FF0000;")
+
+        # Add the info box to the main layout
+        main_layout.addWidget(info_box)
+
+        self.setLayout(main_layout)
+
+        # Get and display system information
+        get_system_info(info_box)
+        
 class MainApp(QWidget):
     def __init__(self):
         super().__init__()
@@ -84,27 +240,30 @@ class MainApp(QWidget):
         custom_image_label.setAlignment(Qt.AlignCenter)  # Center the image
 
 
-        # Create the Threat Map button
-        threat_map_button = QPushButton("Threat Map")
-        threat_map_button.clicked.connect(self.show_home)
+        # Create the Home button
+        home_button = QPushButton("★彡 𝙃𝙊𝙈𝙀 彡★")
+        home_button.clicked.connect(self.show_home)
 
-        web_search_button = QPushButton("Web Search")
+        web_search_button = QPushButton("𝙒𝙚𝙗 𝙎𝙚𝙖𝙧𝙘𝙝")
         web_search_button.clicked.connect(self.show_web_search)
 
-        serpapi_button = QPushButton("Serpapi")
+        serpapi_button = QPushButton("𝙎𝙚𝙧𝙥𝘼𝙋𝙄")
         serpapi_button.clicked.connect(self.show_serpapi_search)
 
+        
+        user_search_button = QPushButton("𝙐𝙨𝙚𝙧 𝙎𝙚𝙖𝙧𝙘𝙝")
+        user_search_button.clicked.connect(self.show_user_search)
+
         side_menu_layout.addWidget(custom_image_label)  # Add the image label
-        side_menu_layout.addWidget(threat_map_button)
+        side_menu_layout.addWidget(home_button)
         side_menu_layout.addWidget(web_search_button)
         side_menu_layout.addWidget(serpapi_button)
+        side_menu_layout.addWidget(user_search_button)
 
         # Add a line border on the right side of the side menu
         side_menu_widget = QWidget()
         side_menu_widget.setLayout(side_menu_layout)
         side_menu_widget.setStyleSheet("border-right: 1px solid #222222;")  # Darker gray line border
-
-
 
         # Create a stacked widget to manage different views
         self.stacked_widget = QStackedWidget()
@@ -121,7 +280,7 @@ class MainApp(QWidget):
         self.setup_home_view()
 
         self.setLayout(layout)
-        self.setWindowTitle("Scavenger - Osint Tool")
+        self.setWindowTitle("•._.••´¯``•.¸¸.•`        ꜱᴄᴀᴠᴇɴɢᴇʀ ᴏꜱɪɴᴛ ɢᴜɪ        `•.¸¸.•``¯´••._.•")
         self.show_web_search()  # Show the web search view by default
 
 
@@ -136,26 +295,32 @@ class MainApp(QWidget):
         self.stacked_widget.addWidget(serpapi_view)
         self.stacked_widget.setCurrentWidget(serpapi_view)
 
+    def run_info_gathering(self):
+
+        try:
+            subprocess.run(["python3", "src/info_gathering.py"], check=True)
+        except subprocess.CalledProcessError as e:
+            # Handle the error as needed, or simply pass to suppress it
+            pass
 
     def setup_home_view(self):
-        home_view = QWidget()
-        home_layout = QVBoxLayout()
-        home_view.setLayout(home_layout)
-
-        # Load the web page into a QWebEngineView with adjusted size
-        web_engine_view = QWebEngineView()
-
-        web_engine_view.setUrl(QUrl("https://threatmap.bitdefender.com/"))
-        home_layout.addWidget(web_engine_view)
-
+        home_view = HomeWindow()
         self.stacked_widget.addWidget(home_view)
+        # Automatically run the info gathering script when the Home view is set up
+        self.run_info_gathering()
+
+
+    def show_home(self):
+        self.stacked_widget.setCurrentIndex(1)
 
         
     def show_web_search(self):
         self.stacked_widget.setCurrentIndex(0)
 
-    def show_home(self):
-        self.stacked_widget.setCurrentIndex(1)
+    def show_user_search(self):
+        user_search_view = UserSearchGUI()
+        self.stacked_widget.addWidget(user_search_view)
+        self.stacked_widget.setCurrentWidget(user_search_view)
 
 
 
@@ -209,13 +374,13 @@ class SerpapiSearchGUI(QWidget):
         layout.addWidget(label_query)
         layout.addWidget(self.query_input)
 
-        search_button = QPushButton("Search with Serpapi")
+        search_button = QPushButton("- ᴄʟɪᴄᴋ ʜᴇʀᴇ ᴛᴏ ꜱᴛᴀʀᴛ -")
         search_button.clicked.connect(self.run_serpapi_search)
         layout.addWidget(search_button)
         layout.addWidget(self.result_text)
 
         # Add a Save button
-        save_button = QPushButton("Save API Key")
+        save_button = QPushButton("ꜱᴀᴠᴇ ᴀᴘɪ ᴋᴇʏ")
         save_button.clicked.connect(self.save_api_key)
         layout.addWidget(save_button)
 
@@ -570,7 +735,7 @@ if __name__ == '__main__':
     qp.setColor(QPalette.Button, Qt.black)
     app.setPalette(qp)
     app.setStyle("Fusion")
-    app.setWindowIcon(QtGui.QIcon('img/icon_photo.png'))
+    app.setWindowIcon(QtGui.QIcon('img/icon_photo.jpg'))
 
     main_app = MainApp()
     main_app.show()

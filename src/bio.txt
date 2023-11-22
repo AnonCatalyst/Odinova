@@ -1,0 +1,3 @@
+Welcome to Scavenger Osint GUI! We are currently working on a discord server to manage support for this expansive tool so you can look forward to an upcoming update. 
+
+Please read the LICENSE file before continueing using this tool please.
