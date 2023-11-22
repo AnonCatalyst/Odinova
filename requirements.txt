@@ -8,5 +8,5 @@ pyqt5==5.15.4
 pyqtwebengine==5.15.4
 requests==2.26.0
 serpapi==0.7.0
-urllib3==1.26.7
+urllib3==1.26.18
 
