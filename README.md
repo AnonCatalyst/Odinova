@@ -81,5 +81,6 @@ Contributions are welcome! Check out the [Contribution Guidelines](CONTRIBUTING.
 
 <img src="img/screenshot2.png" alt="Scavenger GUI Project #1 - screenshot" width="550" height="300"/>
 <img src="img/screenshot3.png" alt="Scavenger GUI Project #2 - screenshot" width="550" height="300"/>
+
 <img src="img/screenshot4.png" alt="Scavenger GUI Project #3 - screenshot" width="550" height="300"/>
 <img src="img/screenshot5.png" alt="Scavenger GUI Project #4 - screenshot" width="550" height="300"/>
