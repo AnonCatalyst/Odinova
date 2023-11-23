@@ -1,12 +1,12 @@
-asyncio==3.4.3
-beautifulsoup4==4.10.0
-colorama==0.4.4
-fake_useragent==0.1.12
-httpx==0.19.0
-psutil==5.8.0
-pyqt5==5.15.4
-pyqtwebengine==5.15.4
-requests==2.26.0
-serpapi==0.7.0
-urllib3==1.26.7
+asyncio
+beautifulsoup4
+colorama
+fake_useragent
+httpx
+psutil
+pyqt5
+pyqtwebengine
+requests
+serpapi
+urllib3
 

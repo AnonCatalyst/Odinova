@@ -5,8 +5,6 @@ Scavenger is an Open Source Intelligence (OSINT) tool with a graphical user inte
 🚀 Happy OSINTing! 🕵️‍♂️
 
 <img src="img/screenshot.png" alt="Scavenger GUI Project - screenshot" width="550" height="300"/>
-<img src="img/screenshot2.png" alt="Scavenger GUI Project - screenshot" width="550" height="300"/>
-
 
 ## Key Features 🚀
 
@@ -76,7 +74,12 @@ Contributions are welcome! Check out the [Contribution Guidelines](CONTRIBUTING.
 - Inspiration, if any.
 
 ---
-**Disclaimer:** Use this tool responsibly and in accordance with applicable laws and regulations. The authors are not responsible for any misuse or damage caused.
+> **Disclaimer:** Use this tool responsibly and in accordance with applicable laws and regulations. The authors are not responsible for any misuse or damage caused.
 
+---
+> **Images:**
 
-
+<img src="img/screenshot2.png" alt="Scavenger GUI Project #1 - screenshot" width="550" height="300"/>
+<img src="img/screenshot3.png" alt="Scavenger GUI Project #2 - screenshot" width="550" height="300"/>
+<img src="img/screenshot4.png" alt="Scavenger GUI Project #3 - screenshot" width="550" height="300"/>
+<img src="img/screenshot5.png" alt="Scavenger GUI Project #4 - screenshot" width="550" height="300"/>

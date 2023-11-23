@@ -64,6 +64,8 @@ found_social_profiles = set()
 found_forum_pages = set()
 
 
+
+
 class GoogleSearchError(Exception):
     pass
 
@@ -282,6 +284,7 @@ class MainApp(QWidget):
         self.setLayout(layout)
         self.setWindowTitle("•._.••´¯``•.¸¸.•`        ꜱᴄᴀᴠᴇɴɢᴇʀ ᴏꜱɪɴᴛ ɢᴜɪ        `•.¸¸.•``¯´••._.•")
         self.show_web_search()  # Show the web search view by default
+
 
 
 
