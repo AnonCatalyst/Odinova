@@ -1,14 +1,31 @@
-># Scavenger OSINT GUI 🕵️‍♂️
+# Scavenger OSINT GUI 🕵️‍♂️
 
-Scavenger is an Open Source Intelligence (OSINT) tool with a graphical user interface that helps you gather information about a target efficiently.
+Scavenger is an Open Source Intelligence (OSINT) tool with a graphical user interface designed to efficiently gather information about a target. It provides a unified solution for various OSINT tasks, enhancing digital reconnaissance capabilities.
 
-🚀 Happy OSINTing! 🕵️‍♂️
+![Scavenger GUI Project - screenshot](docs/images/screenshot.png)
 
-<img src="img/screenshot.png" alt="Scavenger GUI Project - screenshot" width="550" height="300"/>
+## Table of Contents
+- [Key Features](#key-features)
+- [Dependencies](#dependencies)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Digital Reconnaissance](#digital-reconnaissance)
+- [Targeted and Actionable Results](#targeted-and-actionable-results)
+- [Troubleshooting](#troubleshooting)
+- [Updates and Changelog](#updates-and-changelog)
+- [Security Considerations](#security-considerations)
+- [License](#license)
+- [Author](#author)
+- [Contributing](#contributing)
+- [Acknowledgments](#acknowledgments)
+
+**Important:**
+- **Use this tool responsibly and in accordance with applicable laws and regulations.**
+- **Authors are not responsible for any misuse or damage caused.**
 
 ## Key Features 🚀
 
-- **Web Search:** Perform Google searches and retrieve results.
+- **Web Search:** Conduct Google searches and retrieve detailed results.
 - **User Search:** Search for a target user across specified URLs.
 - **Serpapi Search:** Utilize the Serpapi API for advanced search capabilities.
 - **Info Gathering:** Collect system information using Python and PyQt5.
@@ -28,58 +45,67 @@ Scavenger is an Open Source Intelligence (OSINT) tool with a graphical user inte
 
 ## Installation 📦
 
-1. Clone the repository: `git clone https://github.com/AnonCatalyst/Scavenger.git`
-2. Install dependencies: `python3 install.py`
+1. **Clone the repository: `git clone https://github.com/AnonCatalyst/Scavenger`**
+2. **Install dependencies: `python3 install.py`**
 
 ## Usage 🚨
 
-1. Launch the application: `python scavenger.py`
-2. Choose a search category from the side menu.
-3. Enter the required information.
-4. Click the search button to initiate the search.
+1. **Launch the application: `python scavenger.py`**
+2. **Choose a search category from the side menu.**
+3. **Enter the required information.**
+4. **Click the search button to initiate the search.**
 
 ![Watch the video](img/video.gif)
 
-**Information Obtained**
-    Discover online mentions of a query or username.
-    Identify potential social profiles and forums.
+**Information Obtained:**
+- **Discover online mentions of a query or username.**
+- **Identify potential social profiles and forums.**
 
-**Why Scavenger?**
-    Scavenger offers a unified solution for multiple OSINT tasks.
-    Threading improves efficiency for username searches.
-    
-### Digital Reconnaissance
-Positioned as a robust solution for digital reconnaissance, Scavenger excels in gathering and analyzing publicly available information from online sources. The toolkit empowers users with the capability to navigate and extract valuable insights from the vast landscape of digital data.
+## Digital Reconnaissance
 
-### Targeted and Actionable Results
-Scavenger is dedicated to delivering results that are not only targeted but also actionable. The emphasis is on providing users with information that is relevant to their investigations and capable of guiding informed decision-making.
+- **Robust solution for digital reconnaissance.**
+- **Gathers and analyzes publicly available information from online sources.**
 
+## Targeted and Actionable Results
+
+- **Delivers results that are targeted and actionable.**
+- **Emphasis on providing users with relevant information.**
+
+## Updates and Changelog
+
+- **For a detailed list of changes, see the [Changelog](CHANGELOG.md).**
+
+## Security Considerations
+
+- **Use this tool responsibly and refer to the [Security Guidelines](docs/SECURITY.md) for best practices.**
 
 ## License 📄
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+- **This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.**
 
 ## Author 👤
 
-- AnonCatalyst
-- GitHub: [AnonCatalyst](https://github.com/AnonCatalyst)
+- **AnonCatalyst**
+  - **GitHub: [AnonCatalyst](https://github.com/AnonCatalyst)**
 
 ## Contributing 🤝
 
-Contributions are welcome! Check out the [Contribution Guidelines](CONTRIBUTING.md).
+- **Contributions are welcome! Check out the [Contribution Guidelines](CONTRIBUTING.md).**
 
 ## Acknowledgments 🙏
 
-- Mention any external libraries or tools used.
-- Inspiration, if any.
+- **Mention any external libraries or tools used.**
+- **Inspiration, if any.**
 
 ---
-> **Disclaimer:** Use this tool responsibly and in accordance with applicable laws and regulations. The authors are not responsible for any misuse or damage caused.
+> **Disclaimer:** **Use this tool responsibly and in accordance with applicable laws and regulations.**
+> **Authors are not responsible for any misuse or damage caused.**
+
 
 ---
 > **Images:**
 
-<img src="img/screenshot2.png" alt="Scavenger GUI Project #1 - screenshot" width="550" height="300"/>
-<img src="img/screenshot3.png" alt="Scavenger GUI Project #2 - screenshot" width="550" height="300"/>
-<img src="img/screenshot4.png" alt="Scavenger GUI Project #3 - screenshot" width="550" height="300"/>
-<img src="img/screenshot5.png" alt="Scavenger GUI Project #4 - screenshot" width="550" height="300"/>
+
+![Screenshot #1](img/screenshot2.png) | ![Screenshot #2](img/screenshot3.png)
+:-------------------------:|:-------------------------:
+![Screenshot #3](img/screenshot4.png) | ![Screenshot #4](img/screenshot5.png)
