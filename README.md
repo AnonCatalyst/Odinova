@@ -16,7 +16,6 @@
 - [Usage](#usage)
 - [Digital Reconnaissance](#digital-reconnaissance)
 - [Targeted and Actionable Results](#targeted-and-actionable-results)
-- [Troubleshooting](#troubleshooting)
 - [Updates and Changelog](#updates-and-changelog)
 - [Security Considerations](#security-considerations)
 - [License](#license)
