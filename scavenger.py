@@ -26,7 +26,7 @@ import time
 from PyQt5.QtWidgets import QTextEdit
 from PyQt5.QtWidgets import QLineEdit
 import psutil
-from inf import get_system_info
+from src.inf import get_system_info
 from PyQt5.QtCore import QObject, pyqtSignal
 import subprocess
 import os
@@ -40,7 +40,16 @@ from colorama import Fore
 import logging
 from datetime import datetime
 from PyQt5.QtCore import QTimer
+import warnings
 
+print("""
+
+--WELCOME-TO
+-----Scavenger
+-------OSINT
+--------GUI""")
+# Add these lines before the class definitions where the warnings occur
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 # Configure the logging module
 logging.basicConfig(filename='src/maigret.log', level=logging.INFO, format='%(asctime)s [%(levelname)s]: %(message)s')
@@ -94,7 +103,7 @@ class MaigretSearchThread(QThread):
 
         try:
             # Run the Maigret command with the inputted username
-            command = f"python3 src/maigret/maigret.py {self.username} -a"
+            command = f"python3 src/maigret/maigret.py {self.username}"
             result = os.popen(command).read()
 
             # Log the end of the Maigret process
@@ -429,6 +438,7 @@ class MainApp(QWidget):
         super().__init__()
 
         self.init_ui()
+        os.system("clear")
 
     def init_ui(self):
         self.setGeometry(105, 100, 1100, 600)  # Set the initial window size
@@ -513,19 +523,13 @@ class MainApp(QWidget):
         self.stacked_widget.addWidget(serpapi_view)
         self.stacked_widget.setCurrentWidget(serpapi_view)
 
-    def run_info_gathering(self):
 
-        try:
-            subprocess.run(["python3", "src/info_gathering.py"], check=True)
-        except subprocess.CalledProcessError as e:
-            # Handle the error as needed, or simply pass to suppress it
-            pass
 
     def setup_home_view(self):
         home_view = HomeWindow()
         self.stacked_widget.addWidget(home_view)
         # Automatically run the info gathering script when the Home view is set up
-        self.run_info_gathering()
+
 
 
     def show_home(self):
