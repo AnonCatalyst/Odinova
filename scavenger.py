@@ -26,9 +26,8 @@ import time
 from PyQt5.QtWidgets import QTextEdit
 from PyQt5.QtWidgets import QLineEdit
 import psutil
-
 from inf import get_system_info
-
+from PyQt5.QtCore import QObject, pyqtSignal
 import subprocess
 import os
 from PyQt5.QtWidgets import QTextBrowser
@@ -38,6 +37,14 @@ from src.usr import check_user_in_urls
 import requests
 from requests.exceptions import RequestException, ConnectionError, TooManyRedirects, SSLError
 from colorama import Fore
+import logging
+from datetime import datetime
+from PyQt5.QtCore import QTimer
+
+
+# Configure the logging module
+logging.basicConfig(filename='src/maigret.log', level=logging.INFO, format='%(asctime)s [%(levelname)s]: %(message)s')
+logger = logging.getLogger(__name__)
 
 os.system("clear")
 
@@ -69,14 +76,167 @@ found_forum_pages = set()
 class GoogleSearchError(Exception):
     pass
 
-class UserSearchThread(QThread):
-    # Use a signal to communicate search results
-    search_result = pyqtSignal(str)
 
-    def __init__(self, username, url_list):  # Add url_list parameter
+class MaigretSearchThread(QThread):
+    maigret_finished = pyqtSignal(str)
+    log_message = pyqtSignal(str)
+
+    def __init__(self, username):
         super().__init__()
         self.username = username
-        self.url_list = url_list  # Assign the url_list parameter to the instance variable
+        self.start_time = None
+
+    def run(self):
+        self.start_time = datetime.now()
+
+        # Log the start of the Maigret process
+        self.log_message.emit(f"Maigret process started for username: {self.username}")
+
+        try:
+            # Run the Maigret command with the inputted username
+            command = f"python3 src/maigret/maigret.py {self.username}"
+            result = os.popen(command).read()
+
+            # Log the end of the Maigret process
+            self.log_message.emit(f"Maigret process ended for username: {self.username}")
+
+            # Log the duration of the Maigret process
+            end_time = datetime.now()
+            duration = end_time - self.start_time
+            self.log_message.emit(f"Maigret process took {duration}")
+
+            self.maigret_finished.emit(result)
+        except Exception as e:
+            error_message = f"Error in MaigretSearchThread: {str(e)}"
+            self.log_message.emit(error_message)
+            self.maigret_finished.emit(error_message)
+
+
+class MaigretSearchGUI(QWidget):
+    def __init__(self):
+        super().__init__()
+
+        self.username_input = QLineEdit()
+        self.maigret_result_text = QTextEdit()
+        self.log_text = QTextEdit()
+
+        self.maigret_thread = None  # Initialize maigret_thread as None
+
+        self.maigret_timer = QTimer()
+        self.maigret_timer.timeout.connect(self.update_maigret_status)
+        # Set the interval to 15 seconds (15000 milliseconds)
+        self.maigret_timer.start(15000)
+        
+        self.init_ui()
+
+    def init_ui(self):
+        layout = QVBoxLayout()
+
+        tab_widget = QTabWidget()
+
+        # Create tabs
+        maigret_tab = QWidget()
+        log_tab = QWidget()
+
+        tab_widget.addTab(maigret_tab, "Maigret Results")
+        tab_widget.addTab(log_tab, "Logs")
+
+        # Layouts for each tab
+        maigret_layout = QVBoxLayout(maigret_tab)
+        log_layout = QVBoxLayout(log_tab)
+
+        # Maigret tab content
+        label_username = QLabel("Enter target username:")
+        maigret_layout.addWidget(label_username)
+        maigret_layout.addWidget(self.username_input)
+
+        search_button = QPushButton("- ᴄʟɪᴄᴋ ʜᴇʀᴇ ᴛᴏ ꜱᴛᴀʀᴛ -")
+        search_button.clicked.connect(self.run_maigret_search)
+        maigret_layout.addWidget(search_button)
+
+        maigret_layout.addWidget(self.maigret_result_text)
+
+        # Log tab content
+        log_layout.addWidget(self.log_text)
+
+        # Set the background color and border style for the input boxes and result box
+        for widget in [self.username_input, self.maigret_result_text, self.log_text]:
+            widget.setStyleSheet("background-color: #303030; color: white; border: 1px solid #FF0000;")
+
+        layout.addWidget(tab_widget)
+        self.setLayout(layout)
+
+
+
+    def run_maigret_search(self):
+        username = self.username_input.text()
+        if not username:
+            QMessageBox.warning(self, "Warning", "Please enter a username.")
+            return
+
+        # Create an instance of the Maigret search thread and pass the username
+        self.maigret_thread = MaigretSearchThread(username)
+        self.maigret_thread.maigret_finished.connect(self.display_maigret_results)
+        self.maigret_thread.log_message.connect(self.display_log)
+
+        # Start the Maigret search thread
+        self.maigret_thread.start()
+
+        # Start the timer to update the Maigret status in the log every 15 seconds
+        self.maigret_timer.start()
+
+        self.display_maigret_results("""Searching with Maigret...
+~~~~~~~~~~~~~~~~~~~~~~~~~
+This can take a while depending on your network speed
+the averate wait time is closer to 2 minutes.""")
+
+
+    def update_maigret_status(self):
+        if self.maigret_thread and self.maigret_thread.isRunning():
+            # Calculate the duration and notify the user
+            current_time = datetime.now()
+            duration = current_time - self.maigret_thread.start_time
+            self.display_log(f"Maigret is still running. Please wait. Duration: {duration}")
+        else:
+            # If the thread is not running, stop the timer
+            self.maigret_timer.stop()
+
+    def display_maigret_results(self, result):
+        # Display the result in the Maigret results tab
+        self.maigret_result_text.setPlainText(result)
+
+    def display_log(self, log_message):
+        # Display log messages in the "Logs" tab
+        self.log_text.append(log_message)
+
+    def closeEvent(self, event):
+        # Save the Maigret results when the window is closed
+        maigret_results = self.maigret_result_text.toPlainText()
+        with open("reports/maigret_results.txt", "w") as f:
+            f.write(maigret_results)
+        event.accept()
+
+    def showEvent(self, event):
+        # Load the saved Maigret results when the window is shown
+        try:
+            with open("reports/maigret_results.txt", "r") as f:
+                maigret_results = f.read()
+                self.maigret_result_text.setPlainText(maigret_results)
+        except FileNotFoundError:
+            pass
+        event.accept()
+        os.system("rm -rf reports")
+        
+class UserSearchThread(QThread):
+    # Add error signal
+    search_result = pyqtSignal(str)
+    error = pyqtSignal(str)
+    log = pyqtSignal(str)
+
+    def __init__(self, username, url_list):
+        super().__init__()
+        self.username = username
+        self.url_list = url_list
 
     def run(self):
         for url in self.url_list:
@@ -90,9 +250,15 @@ class UserSearchThread(QThread):
                     result = f"• {self.username} | [✓] URL: {url} {response.status_code}"
                     # Emit the search result through the signal
                     self.search_result.emit(result)
-            except (ConnectionError, TooManyRedirects, RequestException, SSLError, TimeoutError):
-                # Ignore these specific exceptions
-                pass
+            except (ConnectionError, TooManyRedirects, RequestException, SSLError, TimeoutError) as e:
+                # Emit the error through the signal
+                self.error.emit(f"Error during search for user in {url}: {str(e)}")
+            except Exception as e:
+                # Emit the error through the signal
+                self.error.emit(f"Unexpected error during search for user in {url}: {str(e)}")
+            finally:
+                # Emit log message
+                self.log.emit(f"Search for user in {url} completed.")
 
 class UserSearchGUI(QWidget):
     def __init__(self):
@@ -100,7 +266,10 @@ class UserSearchGUI(QWidget):
 
         self.username_input = QLineEdit()
         self.result_text = QTextEdit()
+        self.error_text = QTextEdit()
+        self.log_text = QTextEdit()
         self.search_thread = None  # Initialize search_thread as None
+
 
         self.init_ui()
 
@@ -114,11 +283,45 @@ class UserSearchGUI(QWidget):
         search_button = QPushButton("- ᴄʟɪᴄᴋ ʜᴇʀᴇ ᴛᴏ ꜱᴛᴀʀᴛ -")
         search_button.clicked.connect(self.run_user_search)
         layout.addWidget(search_button)
-        layout.addWidget(self.result_text)
+
+        # Create a tab widget
+        tabs = QTabWidget()
+
+        # Create tabs for results, errors, and logging
+        results_tab = QWidget()
+        errors_tab = QWidget()
+        log_tab = QWidget()
+
+        # Add the tabs to the tab widget
+        tabs.addTab(results_tab, "Results")
+        tabs.addTab(errors_tab, "Errors")
+        tabs.addTab(log_tab, "Logging")
+
+        # Set layouts for tabs
+        results_layout = QVBoxLayout(results_tab)
+        errors_layout = QVBoxLayout(errors_tab)
+        log_layout = QVBoxLayout(log_tab)
+
+        # Add widgets to the layouts
+        results_layout.addWidget(self.result_text)
+        errors_layout.addWidget(self.error_text)
+        log_layout.addWidget(self.log_text)
+
+        # Set the background color for the text boxes in all tabs
+        for text_edit in [self.result_text, self.error_text, self.log_text]:
+            text_edit.setStyleSheet("background-color: #303030; color: white; border: 1px solid #FF0000;")
+
+        # Add layouts to the corresponding tabs
+        results_tab.setLayout(results_layout)
+        errors_tab.setLayout(errors_layout)
+        log_tab.setLayout(log_layout)
+
+        # Add the tab widget to the main layout
+        layout.addWidget(tabs)
 
         self.setLayout(layout)
 
-        for widget in [self.username_input, self.result_text]:
+        for widget in [self.username_input, self.result_text, self.error_text, self.log_text]:
             widget.setStyleSheet("background-color: #303030; color: white; border: 1px solid #FF0000;")
 
     def run_user_search(self):
@@ -131,6 +334,8 @@ class UserSearchGUI(QWidget):
         url_list = self.load_urls_from_file()
         self.search_thread = UserSearchThread(target_username, url_list)
         self.search_thread.search_result.connect(self.display_username_search_result)
+        self.search_thread.error.connect(self.display_error)
+        self.search_thread.log.connect(self.display_log)
 
         # Start the search thread
         self.search_thread.start()
@@ -139,6 +344,12 @@ class UserSearchGUI(QWidget):
 
     def display_username_search_result(self, result):
         self.result_text.append(result)
+
+    def display_error(self, error):
+        self.error_text.append(error)
+
+    def display_log(self, log):
+        self.log_text.append(log)
 
     def load_urls_from_file(self):
         try:
@@ -256,11 +467,15 @@ class MainApp(QWidget):
         user_search_button = QPushButton("𝙐𝙨𝙚𝙧 𝙎𝙚𝙖𝙧𝙘𝙝")
         user_search_button.clicked.connect(self.show_user_search)
 
+        maigret_button = QPushButton("𝙈𝙖𝙞𝙜𝙧𝙚𝙩")
+        maigret_button.clicked.connect(self.show_maigret_search)
+
         side_menu_layout.addWidget(custom_image_label)  # Add the image label
         side_menu_layout.addWidget(home_button)
         side_menu_layout.addWidget(web_search_button)
         side_menu_layout.addWidget(serpapi_button)
         side_menu_layout.addWidget(user_search_button)
+        side_menu_layout.addWidget(maigret_button)
 
         # Add a line border on the right side of the side menu
         side_menu_widget = QWidget()
@@ -325,6 +540,14 @@ class MainApp(QWidget):
         self.stacked_widget.addWidget(user_search_view)
         self.stacked_widget.setCurrentWidget(user_search_view)
 
+
+    def setup_maigret_search_view(self):
+        maigret_view = MaigretSearchGUI()
+        self.stacked_widget.addWidget(maigret_view)
+
+    def show_maigret_search(self):
+        self.setup_maigret_search_view()
+        self.stacked_widget.setCurrentIndex(self.stacked_widget.count() - 1)
 
 
 class SerpapiSearchThread(QThread):
