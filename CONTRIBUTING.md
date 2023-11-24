@@ -23,7 +23,3 @@ If you find any issues or bugs, please open an issue with detailed information a
 
 If you have ideas for new features, open an issue to discuss the proposed changes before implementing them.
 
-## Code of Conduct
-
-Please adhere to the project's [Code of Conduct](CODE_OF_CONDUCT.md) in all interactions.
-
