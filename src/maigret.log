@@ -5,3 +5,6 @@
 2023-11-23 19:55:20,037 [INFO]: Maigret process started for username: gotr00t0day
 2023-11-23 19:56:47,624 [INFO]: Maigret process ended for username: gotr00t0day
 2023-11-23 19:56:47,624 [INFO]: Maigret process took 0:01:27.588171
+2023-11-23 21:36:05,206 [INFO]: HTTP Request: GET https://www.google.com/search?q=BoucyMatt&start=0 "HTTP/1.1 200 OK"
+2023-11-23 21:36:13,826 [INFO]: HTTP Request: GET https://www.google.com/search?q=BoucyMatt&start=10 "HTTP/1.1 200 OK"
+2023-11-23 21:41:30,478 [WARNING]: Certificate did not match expected hostname: www.blip.fm. Certificate: {'subject': ((('commonName', 'blip.fm'),),), 'issuer': ((('countryName', 'US'),), (('organizationName', "Let's Encrypt"),), (('commonName', 'R3'),)), 'version': 3, 'serialNumber': '039F3500C02757B502E2362382F5EEB637A5', 'notBefore': 'Oct  1 03:06:02 2023 GMT', 'notAfter': 'Dec 30 03:06:01 2023 GMT', 'subjectAltName': (('DNS', 'blip.fm'),), 'OCSP': ('http://r3.o.lencr.org',), 'caIssuers': ('http://r3.i.lencr.org/',)}

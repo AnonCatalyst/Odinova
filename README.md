@@ -1,10 +1,13 @@
-# Scavenger OSINT GUI 🕵️‍♂️
+> **Scavenger OSINT GUI** 🕵️‍♂️
 
-Scavenger is an Open Source Intelligence (OSINT) tool with a graphical user interface designed to efficiently gather information about a target. It provides a unified solution for various OSINT tasks, enhancing digital reconnaissance capabilities.
+## About Scavenger
+
+Scavenger is a powerful and user-friendly Open Source Intelligence (OSINT) tool designed to enhance digital reconnaissance capabilities. With its intuitive graphical user interface, Scavenger provides a unified solution for various OSINT tasks, allowing users to efficiently gather information about a target. This tool is developed with the goal of empowering individuals and security professionals to conduct responsible and effective information gathering.
 
 ![Scavenger GUI Project - screenshot](docs/images/screenshot.png)
 
 ## Table of Contents
+
 - [Key Features](#key-features)
 - [Dependencies](#dependencies)
 - [Installation](#installation)
@@ -71,6 +74,15 @@ Scavenger is an Open Source Intelligence (OSINT) tool with a graphical user inte
 - **Delivers results that are targeted and actionable.**
 - **Emphasis on providing users with relevant information.**
 
+## Potential Use Cases 🎯
+
+- **Scavenger can be employed for various purposes, including:**
+
+    ``Security Audits: Enhance security audits by uncovering potential vulnerabilities and identifying digital footprints.
+    Digital Investigations: Facilitate digital investigations by collecting and analyzing information related to specific targets.
+    Online Reputation Management: Monitor and manage online presence by tracking mentions and social profiles.
+    Threat Intelligence: Strengthen threat intelligence efforts by staying informed about potential threats and emerging trends.``
+
 ## Updates and Changelog
 
 - **For a detailed list of changes, see the [Changelog](CHANGELOG.md).**
@@ -109,3 +121,4 @@ Scavenger is an Open Source Intelligence (OSINT) tool with a graphical user inte
 ![Screenshot #1](img/screenshot2.png) | ![Screenshot #2](img/screenshot3.png)
 :-------------------------:|:-------------------------:
 ![Screenshot #3](img/screenshot4.png) | ![Screenshot #4](img/screenshot5.png)
+

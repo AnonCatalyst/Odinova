@@ -42,12 +42,7 @@ from datetime import datetime
 from PyQt5.QtCore import QTimer
 import warnings
 
-print("""
 
---WELCOME-TO
------Scavenger
--------OSINT
---------GUI""")
 # Add these lines before the class definitions where the warnings occur
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
