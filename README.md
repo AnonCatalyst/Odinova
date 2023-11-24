@@ -1,4 +1,4 @@
-{ **Scavenger OSINT GUI** 🕵️‍♂️ }
+>>> **Scavenger OSINT GUI** 🕵️‍♂️ 
 
 ## About Scavenger
 
