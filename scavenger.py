@@ -94,7 +94,7 @@ class MaigretSearchThread(QThread):
 
         try:
             # Run the Maigret command with the inputted username
-            command = f"python3 src/maigret/maigret.py {self.username}"
+            command = f"python3 src/maigret/maigret.py {self.username} -a"
             result = os.popen(command).read()
 
             # Log the end of the Maigret process
