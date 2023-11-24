@@ -29,7 +29,7 @@ Scavenger is an Open Source Intelligence (OSINT) tool with a graphical user inte
 ## Installation 📦
 
 1. Clone the repository: `git clone https://github.com/AnonCatalyst/Scavenger.git`
-2. Install dependencies: `pip install -r requirements.txt`
+2. Install dependencies: `python3 install.py`
 
 ## Usage 🚨
 
