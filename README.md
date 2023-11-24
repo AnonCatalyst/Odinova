@@ -1,4 +1,4 @@
->>> **Scavenger OSINT GUI** 🕵️‍♂️ 
+> **Scavenger OSINT GUI** 🕵️‍♂️
 
 ## About Scavenger
 
@@ -123,3 +123,4 @@
 ![Screenshot #1](img/screenshot2.png) | ![Screenshot #2](img/screenshot3.png)
 :-------------------------:|:-------------------------:
 ![Screenshot #3](img/screenshot4.png) | ![Screenshot #4](img/screenshot5.png)
+
