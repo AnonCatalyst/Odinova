@@ -67,5 +67,5 @@ Additional error handling and debugging statements have been added to identify a
 
 ### 11. Code Organization:
 
-To enhance readability and maintainability, the codebase has been organized into distinct modules. The primary modules include:
+To enhance readability and maintainability, the codebase has been organized into distinct modules.
 
