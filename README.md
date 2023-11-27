@@ -1,7 +1,9 @@
 > **Scavenger OSINT GUI** 🕵️‍♂️
 ---
 - **UPDATE 2.7**
+
 *°_ Bug fixes*
+
 *°_ Holehe Tool (email2registery)*
     also a favorite tool made
       by someone else.
