@@ -4,8 +4,8 @@
 ---
 *°_ Bug fixes*
 *°_ Holehe Tool (email2registery)*
-    *also a favorite tool made*
-      *by someone else.*
+    also a favorite tool made
+      by someone else.
 *°_ Nmap Automated (byme)*
 ---
 **//- ExpectedInUpdate:**
