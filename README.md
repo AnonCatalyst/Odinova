@@ -121,10 +121,6 @@
 - **Contributions are welcome! Check out the [Contribution Guidelines](CONTRIBUTING.md).**
 
 ## Acknowledgments 🙏
-
-- **Mention any external libraries or tools used.**
-- **Inspiration, if any.**
-
 ---
 > **Disclaimer:** **Use this tool responsibly and in accordance with applicable laws and regulations.**
 > **Authors are not responsible for any misuse or damage caused.**
