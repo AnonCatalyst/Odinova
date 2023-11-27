@@ -192,7 +192,10 @@ class MaigretSearchGUI(QWidget):
         self.display_maigret_results("""Searching with Maigret...
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 This can take a while depending on your network speed
-the averate wait time is closer to 2 minutes.""")
+the estimated wait time is around 5 to 7 minutes.""")
+        print("""
+        {Scavenger-Osint-GUI] User Interaction: (Maigret Usersearch) Started...
+        - Esimated wait time is about 5 to 7 minutes!""")
 
 
     def update_maigret_status(self):
