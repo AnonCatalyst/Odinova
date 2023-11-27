@@ -1,4 +1,17 @@
 > **Scavenger OSINT GUI** 🕵️‍♂️
+---
+- **UPDATE 2.7**
+---
+*°_ Bug fixes*
+*°_ Holehe Tool (email2registery)*
+    *also a favorite tool made*
+      *by someone else.*
+*°_ Nmap Automated (byme)*
+---
+**//- ExpectedInUpdate:**
+*°_ IP tools "geolocation, portscan (normal&full), TCP&UDP ping*
+
+
 
 ## About Scavenger
 
