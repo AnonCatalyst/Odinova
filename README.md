@@ -4,14 +4,11 @@
 
 *°_ Bug fixes*
 
-*°_ Holehe Tool (email2registery)*
-    also a favorite tool made
-      by someone else.
+*°_ Holehe (email2registery)*
 
-*°_ Nmap Automated (byme)*
+*°_ Custom Note Pad*
 
-**//- ExpectedInUpdate:**
-*°_ IP tools "geolocation, portscan (normal&full), TCP&UDP ping*
+*°_ Possibly a build in custom browser*
 
 
 
