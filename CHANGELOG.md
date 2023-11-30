@@ -65,7 +65,7 @@ Additional error handling and debugging statements have been added to identify a
     API Key Saving Functionality:
         Users can now save their Serpapi API key for future use. The key is stored in a JSON file (serpapi_api_key.json).
 
-### 11. Code Organization:
+### 10. Code Organization:
 
 To enhance readability and maintainability, the codebase has been organized into distinct modules.
 
