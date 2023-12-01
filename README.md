@@ -1,6 +1,6 @@
 > **Scavenger OSINT GUI** 🕵️‍♂️
 ---
-- **Expected in UPDATE 2.7** 
+- **Expected in UPDATE 3.0** 
 
 °_ Bug fixes*
 
