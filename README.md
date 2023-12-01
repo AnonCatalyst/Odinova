@@ -8,6 +8,19 @@
 
 *°_ Custom Note Pad*
 
+*°_ Drop down menu (top-right)
+
+*°_ Return of the Threat Map
+
+*°_ Base color (red) swiched to cyan
+side menu and button edits 
+and layout adjustments
+
+*°_ Highlighting active buttons 
+
+*°_ Borderline{red} is removed for a 
+more clean look
+
 *°_ Possibly a build in custom browser*
 
 
