@@ -2,27 +2,27 @@
 ---
 - **Expected in UPDATE 2.7** 
 
-*°_ Bug fixes*
+°_ Bug fixes*
 
-*°_ Holehe (email2registery)*
+°_ Holehe (email2registery)*
 
-*°_ Custom Note Pad*
+°_ Custom Note Pad*
 
-*°_ Drop down menu (top-right)
+°_ Drop down menu (top-right)
 
-*°_ Return of the Threat Map
+°_ Return of the Threat Map
 
-*°_ Base color (red) swiched to cyan
+°_ Base color (red) swiched to cyan
 
-*°_ side menu and button edits 
+°_ side menu and button edits 
 and layout adjustments
 
-*°_ Highlighting active buttons 
+°_ Highlighting active buttons 
 
-*°_ Borderline{red} is removed for a 
+°_ Borderline{red} is removed for a 
 more clean look
 
-*°_ Possibly a build in custom browser*
+°_ Possibly a build in custom browser
 
 
 
