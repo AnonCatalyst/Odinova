@@ -22,7 +22,7 @@ and layout adjustments
 °_ Borderline{red} is removed for a 
 more clean look
 
-°_ Possibly a build in custom browser
+°_ Possibly a built in custom browser
 
 
 
