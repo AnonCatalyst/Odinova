@@ -13,7 +13,8 @@
 *°_ Return of the Threat Map
 
 *°_ Base color (red) swiched to cyan
-side menu and button edits 
+
+*°_ side menu and button edits 
 and layout adjustments
 
 *°_ Highlighting active buttons 
