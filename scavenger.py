@@ -39,8 +39,18 @@ from requests.exceptions import RequestException, ConnectionError, TooManyRedire
 from colorama import Fore
 import logging
 from datetime import datetime
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QGraphicsBlurEffect
 from PyQt5.QtCore import QTimer
 import warnings
+from PyQt5.QtWidgets import QTextEdit
+from PyQt5.QtWidgets import QFrame
+from PyQt5.QtGui import QColor
+from PyQt5.QtCore import QTimer, QPropertyAnimation, QEasingCurve, QPoint
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QStackedWidget, QLabel, QDesktopWidget, QMainWindow, QApplication
+from PyQt5.QtGui import QPixmap, QPalette, QBrush, QImage, QDesktopServices
+from PyQt5.QtWidgets import QMenu, QAction
+from PyQt5.QtWidgets import QGridLayout
+
 
 
 # Add these lines before the class definitions where the warnings occur
@@ -76,9 +86,9 @@ found_forum_pages = set()
 
 
 
-
 class GoogleSearchError(Exception):
     pass
+
 
 
 class MaigretSearchThread(QThread):
@@ -165,7 +175,7 @@ class MaigretSearchGUI(QWidget):
 
         # Set the background color and border style for the input boxes and result box
         for widget in [self.username_input, self.maigret_result_text, self.log_text]:
-            widget.setStyleSheet("background-color: #303030; color: white; border: 1px solid #FF0000;")
+            widget.setStyleSheet("background-color: #303030; color: white; border: 1px solid #cyan;")
 
         layout.addWidget(tab_widget)
         self.setLayout(layout)
@@ -316,7 +326,7 @@ class UserSearchGUI(QWidget):
 
         # Set the background color for the text boxes in all tabs
         for text_edit in [self.result_text, self.error_text, self.log_text]:
-            text_edit.setStyleSheet("background-color: #303030; color: white; border: 1px solid #FF0000;")
+            text_edit.setStyleSheet("background-color: #303030; color: white; border: 1px solid #cyan;")
 
         # Add layouts to the corresponding tabs
         results_tab.setLayout(results_layout)
@@ -329,7 +339,7 @@ class UserSearchGUI(QWidget):
         self.setLayout(layout)
 
         for widget in [self.username_input, self.result_text, self.error_text, self.log_text]:
-            widget.setStyleSheet("background-color: #303030; color: white; border: 1px solid #FF0000;")
+            widget.setStyleSheet("background-color: #303030; color: white; border: 1px solid #cyan;")
 
     def run_user_search(self):
         target_username = self.username_input.text()
@@ -397,7 +407,7 @@ class HomeWindow(QWidget):
         # Create a QTextEdit for displaying the bio
         bio_box = QTextEdit()
         bio_box.setReadOnly(True)
-        bio_box.setStyleSheet("background-color: #303030; color: white; border: 1px solid #0000FF;")
+        bio_box.setStyleSheet("background-color: #303030; color: white; border: 1px solid #cyan;")
 
         # Read content from bio.txt file and set it to the bio box
         try:
@@ -421,7 +431,7 @@ class HomeWindow(QWidget):
         # Create a scrollable box for displaying system information
         info_box = QPlainTextEdit()
         info_box.setReadOnly(True)
-        info_box.setStyleSheet("background-color: #303030; color: white; border: 1px solid #FF0000;")
+        info_box.setStyleSheet("background-color: #303030; color: white; border: 1px solid #cyan;")
 
         # Add the info box to the main layout
         main_layout.addWidget(info_box)
@@ -430,6 +440,10 @@ class HomeWindow(QWidget):
 
         # Get and display system information
         get_system_info(info_box)
+
+####
+        ### MainApp
+####
         
 class MainApp(QWidget):
     def __init__(self):
@@ -442,13 +456,11 @@ class MainApp(QWidget):
         self.setGeometry(105, 100, 1100, 600)  # Set the initial window size
 
         layout = QVBoxLayout()
-        
-
+   
         # Create a side menu with buttons
         side_menu_layout = QVBoxLayout()
         side_menu_layout.setAlignment(Qt.AlignTop)
         side_menu_layout.setContentsMargins(0, 0, 0, 0)  # Set margins to zero
-
 
         # Load the custom image
         custom_image_path = 'src/co2.png'
@@ -457,38 +469,51 @@ class MainApp(QWidget):
 
         # Create a QLabel to display the custom image
         custom_image_label = QLabel()
-        custom_image_label.setPixmap(custom_image.scaledToWidth(50))  # Set a fixed width (adjust as needed)
+        custom_image_label.setPixmap(custom_image.scaledToWidth(90))  # Set a fixed width (adjust as needed)
         custom_image_label.setAlignment(Qt.AlignCenter)  # Center the image
 
+        # Create a separator line
+        separator_line = QFrame()
+        separator_line.setFrameShape(QFrame.HLine)
+        separator_line.setFrameShadow(QFrame.Sunken)
+        separator_line.setStyleSheet("background-color: cyan;")
+        
 
         # Create the Home button
-        home_button = QPushButton("★彡 𝙃𝙊𝙈𝙀 彡★")
+        home_button = HoverPushButton("★彡 𝙃𝙊𝙈𝙀 彡★")
         home_button.clicked.connect(self.show_home)
-
-        web_search_button = QPushButton("𝙒𝙚𝙗 𝙎𝙚𝙖𝙧𝙘𝙝")
+        web_search_button = HoverPushButton("𝙒𝙚𝙗 𝙎𝙚𝙖𝙧𝙘𝙝")
         web_search_button.clicked.connect(self.show_web_search)
-
-        serpapi_button = QPushButton("𝙎𝙚𝙧𝙥𝘼𝙋𝙄")
+        serpapi_button = HoverPushButton("𝙎𝙚𝙧𝙥𝘼𝙋𝙄")
         serpapi_button.clicked.connect(self.show_serpapi_search)
-
-        
-        user_search_button = QPushButton("𝙐𝙨𝙚𝙧 𝙎𝙚𝙖𝙧𝙘𝙝")
+        user_search_button = HoverPushButton("𝙐𝙨𝙚𝙧 𝙎𝙚𝙖𝙧𝙘𝙝")
         user_search_button.clicked.connect(self.show_user_search)
-
-        maigret_button = QPushButton("𝙈𝙖𝙞𝙜𝙧𝙚𝙩")
+        maigret_button = HoverPushButton("𝙈𝙖𝙞𝙜𝙧𝙚𝙩")
         maigret_button.clicked.connect(self.show_maigret_search)
 
+
+        # Add a separator line
+        separator_line1 = QFrame()
+        separator_line1.setFrameShape(QFrame.VLine)
+        separator_line1.setFrameShadow(QFrame.Sunken)
+        separator_line1.setStyleSheet("background-color: #222222;")
+
+
+        # Add widgets to the side menu layout
         side_menu_layout.addWidget(custom_image_label)  # Add the image label
+        side_menu_layout.addWidget(separator_line)  # Add the separator line
         side_menu_layout.addWidget(home_button)
         side_menu_layout.addWidget(web_search_button)
         side_menu_layout.addWidget(serpapi_button)
         side_menu_layout.addWidget(user_search_button)
         side_menu_layout.addWidget(maigret_button)
 
+
+
         # Add a line border on the right side of the side menu
         side_menu_widget = QWidget()
         side_menu_widget.setLayout(side_menu_layout)
-        side_menu_widget.setStyleSheet("border-right: 1px solid #222222;")  # Darker gray line border
+        side_menu_widget.setStyleSheet("border-top: 1px solid #333333; border-right: 1px solid #333333;")  # Darker gray line border
 
         # Create a stacked widget to manage different views
         self.stacked_widget = QStackedWidget()
@@ -509,6 +534,13 @@ class MainApp(QWidget):
         self.show_web_search()  # Show the web search view by default
 
 
+    def open_threat_map(self):
+        # Open the web view of the specified URL in a new window
+        web_view = QWebEngineView()
+        web_view.setUrl(QUrl("https://threatmap.bitdefender.com/"))
+        web_view.setWindowTitle("Threat Map")
+        web_view.show()
+
 
 
     def setup_web_search_view(self):
@@ -528,12 +560,9 @@ class MainApp(QWidget):
         self.stacked_widget.addWidget(home_view)
         # Automatically run the info gathering script when the Home view is set up
 
-
-
     def show_home(self):
         self.stacked_widget.setCurrentIndex(1)
-
-        
+       
     def show_web_search(self):
         self.stacked_widget.setCurrentIndex(0)
 
@@ -541,7 +570,6 @@ class MainApp(QWidget):
         user_search_view = UserSearchGUI()
         self.stacked_widget.addWidget(user_search_view)
         self.stacked_widget.setCurrentWidget(user_search_view)
-
 
     def setup_maigret_search_view(self):
         maigret_view = MaigretSearchGUI()
@@ -551,6 +579,114 @@ class MainApp(QWidget):
         self.setup_maigret_search_view()
         self.stacked_widget.setCurrentIndex(self.stacked_widget.count() - 1)
 
+
+
+
+
+
+
+
+class HoverPushButton(QPushButton):
+    def __init__(self, *args, **kwargs):
+        super(HoverPushButton, self).__init__(*args, **kwargs)
+        self.setMouseTracking(True)
+        self.setStyleSheet(
+            """
+            HoverPushButton {
+                background-color: black;
+                color: white;
+                border: 1px solid #333333; /* Added border with padding */
+                padding: 8px; /* Adjusted padding for separation */
+                text-align: left;
+            }
+            HoverPushButton:hover {
+                background-color: black;
+                color: cyan;
+            }
+            HoverPushButton:pressed {
+                background-color: green;
+                color: black;
+            }
+            """
+        )
+
+    def mousePressEvent(self, event):
+        if self.isEnabled():
+            self.animate_click_effect()
+            self.clicked.emit()
+        super().mousePressEvent(event)
+
+    def animate_click_effect(self):
+        original_geometry = self.geometry()
+
+        # Define the target geometries for fade-in and fade-out
+        fade_in_geometry = original_geometry.adjusted(-5, -5, 5, 5)
+        fade_out_geometry = original_geometry
+
+        # Set the duration of the animation in milliseconds
+        duration = 200
+
+        # Set easing curve for smooth animation
+        easing_curve = QEasingCurve.InOutQuad
+
+        # Create animation for position
+        pos_animation = QPropertyAnimation(self, b"pos")
+        pos_animation.setStartValue(original_geometry.topLeft())
+        pos_animation.setEndValue(original_geometry.topLeft())
+        pos_animation.setDuration(duration)
+        pos_animation.setEasingCurve(easing_curve)
+
+        # Create animation for size
+        size_animation = QPropertyAnimation(self, b"size")
+        size_animation.setStartValue(original_geometry.size())
+        size_animation.setEndValue(original_geometry.size())
+        size_animation.setDuration(duration)
+        size_animation.setEasingCurve(easing_curve)
+
+        # Create animation for geometry
+        geometry_animation = QPropertyAnimation(self, b"geometry")
+        geometry_animation.setStartValue(original_geometry)
+        geometry_animation.setEndValue(original_geometry)
+        geometry_animation.setDuration(duration)
+        geometry_animation.setEasingCurve(easing_curve)
+
+        # Start the animations
+        pos_animation.start()
+        size_animation.start()
+        geometry_animation.start()
+
+        # Connect the finished signal to reset the colors after the animation completes
+        pos_animation.finished.connect(self.reset_colors)
+
+    def reset_colors(self):
+        self.setStyleSheet(
+            """
+            HoverPushButton {
+                background-color: black;
+                color: white;
+                border: 1px solid #222222; /* Added border with padding */
+                padding: 8px; /* Adjusted padding for separation */
+                text-align: left;
+            }
+            HoverPushButton:hover {
+                background-color: black;
+                color: cyan;
+            }
+            HoverPushButton:pressed {
+                background-color: green;
+                color: black;
+            }
+            """
+        )
+
+
+
+
+
+
+        
+
+        
 
 class SerpapiSearchThread(QThread):
     search_finished = pyqtSignal(str)
@@ -616,10 +752,10 @@ class SerpapiSearchGUI(QWidget):
 
         # Set the background color and border style for the input boxes
         for input_box in [self.token_input, self.query_input]:
-            input_box.setStyleSheet("background-color: #303030; color: white; border: 1px solid #FF0000;")
+            input_box.setStyleSheet("background-color: #303030; color: white; border: 1px solid #cyan;")
 
         # Set the background color, text color, and border style for the result box
-        self.result_text.setStyleSheet("background-color: #303030; color: white; border: 1px solid #FF0000;")
+        self.result_text.setStyleSheet("background-color: #303030; color: white; border: 1px solid #cyan;")
 
     def save_api_key(self):
         api_key = self.token_input.text()
@@ -664,7 +800,7 @@ class WebSearchGUI(QWidget):
         self.query_input = QLineEdit()
         self.num_results_input = QLineEdit()
         self.status_label = QLabel("❌")  # Initial status: Red X
-        self.status_label.setStyleSheet("color: red; font-size: 20px;")
+        self.status_label.setStyleSheet("color: cyan; font-size: 20px;")
 
         # Set the initial status to "Inactive"
         self.set_status_icon("Inactive: ", "❌")
@@ -717,7 +853,7 @@ class WebSearchGUI(QWidget):
 
         # Set the background color for the text boxes in all tabs
         for text_edit in [self.result_text, self.error_text, self.social_profiles_text, self.forum_pages_text, self.mentions_text, self.actions_text]:
-            text_edit.setStyleSheet("background-color: #303030; color: white; border: 1px solid #FF0000;")
+            text_edit.setStyleSheet("background-color: #303030; color: white; border: 1px solid #cyan;")
 
 
         # Add layouts to the corresponding tabs
@@ -752,12 +888,12 @@ class WebSearchGUI(QWidget):
         self.setWindowTitle("Scavenger - Osint Tool")
 
         # Set the background color and border style for the input boxes
-        self.result_text.setStyleSheet("color: #00FFFF; background-color: #303030; border: 1px solid #FF0000;")
-        self.query_input.setStyleSheet("background-color: #303030; color: white; border: 1px solid #FF0000;")
-        self.num_results_input.setStyleSheet("background-color: #303030; color: white; border: 1px solid #FF0000;")
+        self.result_text.setStyleSheet("color: black; background-color: #303030; border: 1px solid black;")
+        self.query_input.setStyleSheet("background-color: #303030; color: white; border: 1px solid black;")
+        self.num_results_input.setStyleSheet("background-color: #303030; color: white; border: 1px solid black;")
 
         # Set the style for the search button
-        search_button.setStyleSheet("background-color: black; color: #FF0000; border: 1px solid #000000;")
+        search_button.setStyleSheet("background-color: black; color: cyan; border: 1px solid black;")
 
     def run_search(self):
         self.log_action("Google Search started.")
@@ -789,7 +925,7 @@ class WebSearchGUI(QWidget):
         self.status_label.setText(full_text)
         self.status_label.setStyleSheet(
             f"QLabel {{ color: gray; font-size: 12px; }}"
-            f"QLabel::before {{ content: '{icon}'; color: red; display: inline-block; }}"
+            f"QLabel::before {{ content: '{icon}'; color: cyan; display: inline-block; }}"
         )
 
     async def make_request_async(self, url):
@@ -874,12 +1010,12 @@ class WebSearchGUI(QWidget):
                         if title and url:
                             # Cyan color for titles
                             title_text = f"🔍 {index}. Title: {title.text}"
-                            self.result_text.setStyleSheet("color: #00FFFF; background-color: #303030; border: 1px solid #FF0000;")
+                            self.result_text.setStyleSheet("color: #00FFFF; background-color: #303030; border: 1px solid black;")
                             self.result_text.append(title_text)
 
                             # White color for URLs
                             url_text = f"   🌐 URL: {url}"
-                            self.result_text.setStyleSheet("color: white; background-color: #303030; border: 1px solid #FF0000;")
+                            self.result_text.setStyleSheet("color: white; background-color: #303030; border: 1px solid black;")
                             self.result_text.append(url_text)
 
                             text_to_check = f"{title.text} {url}"
@@ -896,7 +1032,7 @@ class WebSearchGUI(QWidget):
                             if mention_count > 0:
                                 # Black color for detection messages
                                 detection_text = f"   🚨 '{self.query}' Detected in Title/Url: {url}"
-                                self.result_text.setStyleSheet("color: white; background-color: #303030; border: 1px solid #FF0000;")
+                                self.result_text.setStyleSheet("color: white; background-color: #303030; border: 1px solid black;")
                                 self.result_text.append(detection_text)
 
                                 # Add to social profiles text
@@ -924,12 +1060,12 @@ class WebSearchGUI(QWidget):
         if profile_url not in found_social_profiles:
             if "forum" in profile_url.lower():
                 # Add to forum pages text
-                self.forum_pages_text.setStyleSheet("color: #00FF00; background-color: #303030; border: 1px solid #FF0000;")
+                self.forum_pages_text.setStyleSheet("color: #00FF00; background-color: #303030; border: 1px solid black;")
                 self.forum_pages_text.append(f"🌐 {index}. Forum: {profile_url}")
                 found_forum_pages.add(profile_url)
             else:
                 # Add to social profiles text
-                self.social_profiles_text.setStyleSheet("color: #00FF00; background-color: #303030; border: 1px solid #FF0000;")
+                self.social_profiles_text.setStyleSheet("color: #00FF00; background-color: #303030; border: 1px solid black;")
                 self.social_profiles_text.append(f"🌐 {index}. {profile_url}")
             found_social_profiles.add(profile_url)
 
@@ -952,12 +1088,10 @@ class WebSearchGUI(QWidget):
         self.actions_text.append(action)
         QApplication.processEvents()  # Allow the GUI to handle events
 
-
-
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     qp = QPalette()
-    qp.setColor(QPalette.ButtonText, Qt.red)
+    qp.setColor(QPalette.ButtonText, Qt.cyan)
     qp.setColor(QPalette.WindowText, Qt.white)
     qp.setColor(QPalette.Window, Qt.black)
     qp.setColor(QPalette.Button, Qt.black)

@@ -1,28 +1,4 @@
-> **Scavenger OSINT GUI** 🕵️‍♂️
----
-- **Expected in UPDATE 3.0** 
-
-°_ Bug fixes*
-
-°_ Custom Note Pad*
-
-°_ Drop down menu (top-right)
-
-°_ Return of the Threat Map
-
-°_ Base color (red) swiched to cyan
-
-°_ side menu and button edits 
-and layout adjustments
-
-°_ Highlighting active buttons 
-
-°_ Borderline{red} is removed for a 
-more clean look
-
-°_ Possibly a built in custom browser
-
-
+{ **Scavenger OSINT GUI** 🕵️‍♂️ }
 
 ## About Scavenger
 
@@ -40,6 +16,7 @@ more clean look
 - [Usage](#usage)
 - [Digital Reconnaissance](#digital-reconnaissance)
 - [Targeted and Actionable Results](#targeted-and-actionable-results)
+- [Troubleshooting](#troubleshooting)
 - [Updates and Changelog](#updates-and-changelog)
 - [Security Considerations](#security-considerations)
 - [License](#license)
@@ -130,6 +107,10 @@ more clean look
 - **Contributions are welcome! Check out the [Contribution Guidelines](CONTRIBUTING.md).**
 
 ## Acknowledgments 🙏
+
+- **Mention any external libraries or tools used.**
+- **Inspiration, if any.**
+
 ---
 > **Disclaimer:** **Use this tool responsibly and in accordance with applicable laws and regulations.**
 > **Authors are not responsible for any misuse or damage caused.**

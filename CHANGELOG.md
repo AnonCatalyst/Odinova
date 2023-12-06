@@ -27,15 +27,18 @@ Additional error handling and debugging statements have been added to identify a
 - Removed the `os.system("clear")` line as it might not work in all environments.
 - Organized the code and imports for better readability.
 
-### 5. Added Maigret Window to Side Menu:
+### 5. Additional Suggestions:
+- Provided alternative solutions for handling libpng warnings, including upgrading/downgrading libraries, using a different image library, and checking the image files.
+
+### 6. Added Maigret Window to Side Menu:
 
 - A new button named "Maigret" has been added to the side menu. Clicking on this button opens a new window for Maigret functionality.
 
-### 6. Maigret Window Structure:
+### 7. Maigret Window Structure:
 
 - The Maigret window contains an input box for the username and a result box to display the results. Users can input a username, hit the search button, and the tool will run a command using `os.system`:
 
-### 7. Username Search Functionality:
+### 8. Username Search Functionality:
 
 - The username search functionality has been refactored to improve its efficiency and make the code more modular. The following changes were implemented:
 
@@ -45,7 +48,7 @@ Additional error handling and debugging statements have been added to identify a
     Refactored Username Search Function:
         The username_search function has been refactored to use the requests library for making HTTP requests. The response handling has been improved to accurately identify valid usernames on web pages.
 
-### 8. User Interface Enhancements:
+### 9. User Interface Enhancements:
 
 - The user interface has been refined to provide a more intuitive and visually appealing experience. Notable changes include:
 
@@ -55,7 +58,7 @@ Additional error handling and debugging statements have been added to identify a
     Separated GUI Components:
         Different components of the tool, such as web search, Serpapi search, and user search, have been separated into individual GUI modules. This separation enhances code organization and maintainability.
 
-### 9. Serpapi Integration:
+### 10. Serpapi Integration:
 
 - Integration with Serpapi, a search engine results API, has been added. Users can now perform searches using Serpapi by providing their API key. The following changes were made:
 
@@ -65,7 +68,7 @@ Additional error handling and debugging statements have been added to identify a
     API Key Saving Functionality:
         Users can now save their Serpapi API key for future use. The key is stored in a JSON file (serpapi_api_key.json).
 
-### 10. Code Organization:
+### 11. Code Organization:
 
-To enhance readability and maintainability, the codebase has been organized into distinct modules.
+To enhance readability and maintainability, the codebase has been organized into distinct modules. The primary modules include:
 

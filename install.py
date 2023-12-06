@@ -2,11 +2,15 @@ import subprocess
 import platform
 import os
 
+os.system("cd src && rm -rf osintgram")
+os.system("cd src && git clone https://github.com/Datalux/Osintgram && cd osintgram && sudo python3 setup.py install")
+    
+
 
 def install_dependencies():
     try:
         # Install PyQt5 using pip
-        subprocess.run(["pip", "install", "PyQt5==5.15.4"])
+        subprocess.run(["pip", "install", "PyQt5"])
 
         # Install other Python dependencies from requirements.txt
         subprocess.run(["pip", "install", "-r", "src/requirements.txt"])
@@ -41,7 +45,7 @@ def setup_maigret():
     os.system("cd src && rm -rf maigret")
     os.system("cd src && git clone https://github.com/soxoj/maigret && cd maigret && pip3 install -r requirements.txt")
     os.system("pip3 install maigret")
-    
+
 if __name__ == "__main__":
     install_system_dependencies()
     install_dependencies()
