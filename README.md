@@ -4,8 +4,6 @@
 
 °_ Bug fixes*
 
-°_ Holehe (email2registery)*
-
 °_ Custom Note Pad*
 
 °_ Drop down menu (top-right)
