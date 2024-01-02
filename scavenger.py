@@ -983,7 +983,7 @@ class WebSearchGUI(QWidget):
 
         retry_count = 0
 
-        async with httpx.AsyncClient(verify=False) as client:
+        async with httpx.AsyncClient(verify=True) as client:
             total_results_to_fetch = min(300, num_results)
 
             for start_index in range(0, total_results_to_fetch, 10):
