@@ -175,7 +175,7 @@ class MaigretSearchGUI(QWidget):
 
         # Set the background color and border style for the input boxes and result box
         for widget in [self.username_input, self.maigret_result_text, self.log_text]:
-            widget.setStyleSheet("background-color: #303030; color: white; border: 1px solid #cyan;")
+            widget.setStyleSheet("background-color: #303030; color: white; border: 1px solid black;")
 
         layout.addWidget(tab_widget)
         self.setLayout(layout)
@@ -326,7 +326,7 @@ class UserSearchGUI(QWidget):
 
         # Set the background color for the text boxes in all tabs
         for text_edit in [self.result_text, self.error_text, self.log_text]:
-            text_edit.setStyleSheet("background-color: #303030; color: white; border: 1px solid #cyan;")
+            text_edit.setStyleSheet("background-color: #303030; color: white; border: 1px solid black;")
 
         # Add layouts to the corresponding tabs
         results_tab.setLayout(results_layout)
@@ -339,7 +339,7 @@ class UserSearchGUI(QWidget):
         self.setLayout(layout)
 
         for widget in [self.username_input, self.result_text, self.error_text, self.log_text]:
-            widget.setStyleSheet("background-color: #303030; color: white; border: 1px solid #cyan;")
+            widget.setStyleSheet("background-color: #303030; color: white; border: 1px solid black;")
 
     def run_user_search(self):
         target_username = self.username_input.text()
@@ -407,7 +407,7 @@ class HomeWindow(QWidget):
         # Create a QTextEdit for displaying the bio
         bio_box = QTextEdit()
         bio_box.setReadOnly(True)
-        bio_box.setStyleSheet("background-color: #303030; color: white; border: 1px solid #cyan;")
+        bio_box.setStyleSheet("background-color: #303030; color: white; border: 1px solid black;")
 
         # Read content from bio.txt file and set it to the bio box
         try:
@@ -431,7 +431,7 @@ class HomeWindow(QWidget):
         # Create a scrollable box for displaying system information
         info_box = QPlainTextEdit()
         info_box.setReadOnly(True)
-        info_box.setStyleSheet("background-color: #303030; color: white; border: 1px solid #cyan;")
+        info_box.setStyleSheet("background-color: #303030; color: white; border: 1px solid black;")
 
         # Add the info box to the main layout
         main_layout.addWidget(info_box)
