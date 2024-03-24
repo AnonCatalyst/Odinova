@@ -1,5 +1,5 @@
 { **Scavenger OSINT GUI** 🕵️‍♂️ }
-> **This tool will soon receive an update that will also include an official name change**
+> **This tool will is expected to receive an update that will also include an official name change but may take some time so hold tight.** 💪 
 ## About Scavenger
 
 > Scavenger is a powerful and user-friendly Open Source Intelligence (OSINT) tool designed to enhance digital reconnaissance capabilities. With its intuitive graphical user interface, Scavenger provides a unified solution for various OSINT tasks, allowing users to efficiently gather information about a target. This tool is developed with the goal of empowering individuals and security professionals to conduct responsible and effective information gathering.
