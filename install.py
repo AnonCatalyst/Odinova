@@ -10,10 +10,10 @@ os.system("cd src && git clone https://github.com/Datalux/Osintgram && cd osintg
 def install_dependencies():
     try:
         # Install PyQt5 using pip
-        subprocess.run(["pip", "install", "PyQt5"])
+        subprocess.run(["pip", "install", "PyQt5", "--break-system-packages"])
 
         # Install other Python dependencies from requirements.txt
-        subprocess.run(["pip", "install", "-r", "src/requirements.txt"])
+        subprocess.run(["pip", "install", "-r", "src/requirements.txt", "--break-system-packages"])
 
         print("Python dependencies installed successfully.")
 
