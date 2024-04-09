@@ -43,7 +43,7 @@ def install_system_dependencies():
         print(f"Error installing system-level dependencies: {e}")
 def setup_maigret():
     os.system("cd src && rm -rf maigret")
-    os.system("cd src && git clone https://github.com/soxoj/maigret && cd maigret && pip3 install -r requirements.txt")
+    os.system("cd src && git clone https://github.com/soxoj/maigret && cd maigret && pip3 install -r requirements.txt --break-system-packages")
     os.system("pip3 install maigret --break-system-packages")
 
 if __name__ == "__main__":
