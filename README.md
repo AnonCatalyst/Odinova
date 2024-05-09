@@ -50,12 +50,12 @@
 
 ## Installation 📦
 
-1. **Clone the repository: `git clone https://github.com/AnonCatalyst/Scavenger`**
+1. **Clone the repository: `git clone https://github.com/AnonCatalyst/Odinova`**
 2. **Install dependencies: `python3 install.py`**
 
 ## Usage 🚨
 
-1. **Launch the application: `python scavenger.py`**
+1. **Launch the application: `python odinova.py`**
 2. **Choose a search category from the side menu.**
 3. **Enter the required information.**
 4. **Click the search button to initiate the search.**
