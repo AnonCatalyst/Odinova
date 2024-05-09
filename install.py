@@ -3,9 +3,12 @@ import platform
 import os
 
 def install_dependencies():
-    subprocess.run(["pip", "install", "PyQt5", "--break-system-packages"], check=True)
-    subprocess.run(["pip", "install", "-r", "src/requirements.txt", "--break-system-packages"], check=True)
-    print("Python dependencies installed successfully.")
+    try:
+        subprocess.run(["pip", "install", "PyQt5", "--break-system-packages"], check=True)
+        subprocess.run(["pip", "install", "-r", "src/requirements.txt", "--break-system-packages"], check=True)
+        print("Python dependencies installed successfully.")
+    except subprocess.CalledProcessError:
+        print("Error installing Python dependencies.")
 
 def install_system_dependencies():
     system = platform.system().lower()
@@ -24,13 +27,24 @@ def install_system_dependencies():
     print("System-level dependencies installed successfully.")
 
 def setup_maigret():
-    os.system("rmdir /s /q src\\maigret")
-    subprocess.run(["git", "clone", "https://github.com/soxoj/maigret", "src\\maigret"], check=True)
-    subprocess.run(["pip", "install", "-r", "src\\maigret\\requirements.txt", "--break-system-packages"], check=True)
-    subprocess.run(["pip", "install", "src\\maigret", "--break-system-packages"], check=True)
-    print("Maigret setup completed successfully.")
+    try:
+        os.system("rmdir /s /q src\\maigret")
+        subprocess.run(["git", "clone", "https://github.com/soxoj/maigret", "src\\maigret"], check=True)
+        subprocess.run(["pip", "install", "-r", "src\\maigret\\requirements.txt", "--break-system-packages"], check=True)
+        subprocess.run(["pip", "install", "src\\maigret", "--break-system-packages"], check=True)
+        print("Maigret setup completed successfully.")
+    except subprocess.CalledProcessError:
+        print("Error setting up Maigret.")
+
+def install_yarl():
+    try:
+        subprocess.run(["pip", "install", "yarl"], check=True)
+        print("yarl installed successfully.")
+    except subprocess.CalledProcessError:
+        print("Error installing yarl.")
 
 if __name__ == "__main__":
     install_system_dependencies()
     install_dependencies()
+    install_yarl()
     setup_maigret()
