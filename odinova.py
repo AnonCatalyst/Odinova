@@ -51,8 +51,6 @@ from PyQt5.QtGui import QPixmap, QPalette, QBrush, QImage, QDesktopServices
 from PyQt5.QtWidgets import QMenu, QAction
 from PyQt5.QtWidgets import QGridLayout
 
-
-
 # Add these lines before the class definitions where the warnings occur
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
@@ -175,7 +173,7 @@ class MaigretSearchGUI(QWidget):
 
         # Set the background color and border style for the input boxes and result box
         for widget in [self.username_input, self.maigret_result_text, self.log_text]:
-            widget.setStyleSheet("background-color: #303030; color: white; border: 1px solid black;")
+            widget.setStyleSheet("background-color: #303030; color: white; border: 1px solid #333333;")
 
         layout.addWidget(tab_widget)
         self.setLayout(layout)
@@ -326,7 +324,7 @@ class UserSearchGUI(QWidget):
 
         # Set the background color for the text boxes in all tabs
         for text_edit in [self.result_text, self.error_text, self.log_text]:
-            text_edit.setStyleSheet("background-color: #303030; color: white; border: 1px solid black;")
+            text_edit.setStyleSheet("background-color: #303030; color: white; border: 1px solid #333333;")
 
         # Add layouts to the corresponding tabs
         results_tab.setLayout(results_layout)
@@ -339,7 +337,7 @@ class UserSearchGUI(QWidget):
         self.setLayout(layout)
 
         for widget in [self.username_input, self.result_text, self.error_text, self.log_text]:
-            widget.setStyleSheet("background-color: #303030; color: white; border: 1px solid black;")
+            widget.setStyleSheet("background-color: #303030; color: white; border: 1px solid #333333;")
 
     def run_user_search(self):
         target_username = self.username_input.text()
@@ -407,7 +405,7 @@ class HomeWindow(QWidget):
         # Create a QTextEdit for displaying the bio
         bio_box = QTextEdit()
         bio_box.setReadOnly(True)
-        bio_box.setStyleSheet("background-color: #303030; color: white; border: 1px solid black;")
+        bio_box.setStyleSheet("background-color: #303030; color: white; border: 1px solid #333333;")
 
         # Read content from bio.txt file and set it to the bio box
         try:
@@ -431,7 +429,7 @@ class HomeWindow(QWidget):
         # Create a scrollable box for displaying system information
         info_box = QPlainTextEdit()
         info_box.setReadOnly(True)
-        info_box.setStyleSheet("background-color: #303030; color: white; border: 1px solid black;")
+        info_box.setStyleSheet("background-color: #303030; color: white; border: 1px solid #333333;")
 
         # Add the info box to the main layout
         main_layout.addWidget(info_box)
@@ -450,6 +448,7 @@ class MainApp(QWidget):
         super().__init__()
 
         self.init_ui()
+
         os.system("clear")
 
     def init_ui(self):
@@ -490,8 +489,7 @@ class MainApp(QWidget):
         user_search_button.clicked.connect(self.show_user_search)
         maigret_button = HoverPushButton("𝙈𝙖𝙞𝙜𝙧𝙚𝙩")
         maigret_button.clicked.connect(self.show_maigret_search)
-
-
+        
         # Add a separator line
         separator_line1 = QFrame()
         separator_line1.setFrameShape(QFrame.VLine)
@@ -579,13 +577,6 @@ class MainApp(QWidget):
         self.setup_maigret_search_view()
         self.stacked_widget.setCurrentIndex(self.stacked_widget.count() - 1)
 
-
-
-
-
-
-
-
 class HoverPushButton(QPushButton):
     def __init__(self, *args, **kwargs):
         super(HoverPushButton, self).__init__(*args, **kwargs)
@@ -601,11 +592,14 @@ class HoverPushButton(QPushButton):
             }
             HoverPushButton:hover {
                 background-color: black;
+                border: 1px solid cyan; 
                 color: cyan;
             }
             HoverPushButton:pressed {
-                background-color: green;
-                color: black;
+                background-color: #002434;
+                border: 1px solid cyan;
+                padding: 10px;
+                color: white;
             }
             """
         )
@@ -679,15 +673,6 @@ class HoverPushButton(QPushButton):
             """
         )
 
-
-
-
-
-
-        
-
-        
-
 class SerpapiSearchThread(QThread):
     search_finished = pyqtSignal(str)
 
@@ -752,10 +737,10 @@ class SerpapiSearchGUI(QWidget):
 
         # Set the background color and border style for the input boxes
         for input_box in [self.token_input, self.query_input]:
-            input_box.setStyleSheet("background-color: #303030; color: white; border: 1px solid #cyan;")
+            input_box.setStyleSheet("background-color: #303030; color: white; border: 1px solid #333333;")
 
         # Set the background color, text color, and border style for the result box
-        self.result_text.setStyleSheet("background-color: #303030; color: white; border: 1px solid #cyan;")
+        self.result_text.setStyleSheet("background-color: #303030; color: white; border: 1px solid #333333;")
 
     def save_api_key(self):
         api_key = self.token_input.text()
@@ -853,7 +838,7 @@ class WebSearchGUI(QWidget):
 
         # Set the background color for the text boxes in all tabs
         for text_edit in [self.result_text, self.error_text, self.social_profiles_text, self.forum_pages_text, self.mentions_text, self.actions_text]:
-            text_edit.setStyleSheet("background-color: #303030; color: white; border: 1px solid #cyan;")
+            text_edit.setStyleSheet("background-color: #303030; color: white; border: 1px solid #333333;")
 
 
         # Add layouts to the corresponding tabs
