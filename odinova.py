@@ -599,7 +599,6 @@ class HoverPushButton(QPushButton):
                 background-color: #002434;
                 border: 1px solid cyan;
                 padding: 10px;
-                color: white;
             }
             """
         )
