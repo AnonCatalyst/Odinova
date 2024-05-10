@@ -399,7 +399,7 @@ class HomeWindow(QWidget):
         text_layout = QVBoxLayout()
 
         # Create a QLabel for displaying the name
-        name_label = QLabel('Scavenger Osint GUI')
+        name_label = QLabel('Odinova Osint GUI')
         name_label.setAlignment(Qt.AlignCenter)  # Center the text
 
         # Create a QTextEdit for displaying the bio
@@ -869,7 +869,7 @@ class WebSearchGUI(QWidget):
         layout.addWidget(self.status_label, alignment=Qt.AlignTop | Qt.AlignRight)  # Status label
 
         self.setLayout(layout)
-        self.setWindowTitle("Scavenger - Osint Tool")
+        self.setWindowTitle("Odinova - Osint Tool")
 
         # Set the background color and border style for the input boxes
         self.result_text.setStyleSheet("color: black; background-color: #303030; border: 1px solid black;")
