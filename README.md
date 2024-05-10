@@ -2,11 +2,11 @@
 > **This tool is expected to receive changes in the future.** 💪 
 ## About Odinova 
 
-> Scavenger is a powerful and user-friendly Open Source Intelligence (OSINT) tool designed to enhance digital reconnaissance capabilities. With its intuitive graphical user interface, Scavenger provides a unified solution for various OSINT tasks, allowing users to efficiently gather information about a target. This tool is developed with the goal of empowering individuals and security professionals to conduct responsible and effective information gathering.
+> Odinova is a powerful and user-friendly Open Source Intelligence (OSINT) tool designed to enhance digital reconnaissance capabilities. With its intuitive graphical user interface, Scavenger provides a unified solution for various OSINT tasks, allowing users to efficiently gather information about a target. This tool is developed with the goal of empowering individuals and security professionals to conduct responsible and effective information gathering.
 
-> Scavenger is a robust and feature-rich tool for Open Source Intelligence (OSINT). Its impressive set of capabilities, including advanced search options, system information gathering, and social profile recognition, make it a valuable asset for various purposes such as security audits, digital investigations, and threat intelligence. The user-friendly graphical interface and emphasis on delivering targeted and actionable results contribute to its appeal. However, the true measure of its impressiveness depends on the specific needs and preferences of users within the OSINT community.
+> Odinova is a robust and feature-rich tool for Open Source Intelligence (OSINT). Its impressive set of capabilities, including advanced search options, system information gathering, and social profile recognition, make it a valuable asset for various purposes such as security audits, digital investigations, and threat intelligence. The user-friendly graphical interface and emphasis on delivering targeted and actionable results contribute to its appeal. However, the true measure of its impressiveness depends on the specific needs and preferences of users within the OSINT community.
 
-![Scavenger GUI Project - screenshot](img/screenshot.png)
+![Odinova GUI Project - screenshot](img/screenshot.png)
 
 ## Table of Contents
 
