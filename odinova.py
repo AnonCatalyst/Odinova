@@ -528,7 +528,7 @@ class MainApp(QWidget):
         self.setup_home_view()
 
         self.setLayout(layout)
-        self.setWindowTitle("•._.••´¯``•.¸¸.•`        ꜱᴄᴀᴠᴇɴɢᴇʀ ᴏꜱɪɴᴛ ɢᴜɪ        `•.¸¸.•``¯´••._.•")
+        self.setWindowTitle("•._.••´¯``•.¸¸.•`        ODINOVA OSINT GUI        `•.¸¸.•``¯´••._.•")
         self.show_web_search()  # Show the web search view by default
 
 
