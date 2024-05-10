@@ -1,5 +1,5 @@
 { **Odinova©️** 🕵️‍♂️ }
-> **This tool is expected to receive an Update and a official name change to Odinova soon.** 💪 
+> **This tool is expected to receive changes in the future.** 💪 
 ## About Odinova 
 
 > Scavenger is a powerful and user-friendly Open Source Intelligence (OSINT) tool designed to enhance digital reconnaissance capabilities. With its intuitive graphical user interface, Scavenger provides a unified solution for various OSINT tasks, allowing users to efficiently gather information about a target. This tool is developed with the goal of empowering individuals and security professionals to conduct responsible and effective information gathering.
