@@ -51,7 +51,8 @@
 ## Installation 📦
 
 1. **Clone the repository: `git clone https://github.com/AnonCatalyst/Odinova`**
-2. **Install dependencies: `python3 install.py`**
+2. **Install dependencies: `pip install -r src/requirements.txt --break-system-packages
+`**
 
 ## Usage 🚨
 
