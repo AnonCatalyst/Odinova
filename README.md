@@ -1,4 +1,4 @@
-{ **Odinova©️** 🕵️‍♂️ }
+{ **Odinova©️ Digital Tiger** 🕵️‍♂️ }
 > ⚠️ **This tool is currently being rebuilt! see more of development progress through my instagram** 💪 
 ## About Odinova 
 
