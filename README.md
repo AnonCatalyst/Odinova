@@ -1,4 +1,4 @@
-{ **Odinova©️ Digital Tiger** 🕵️‍♂️ }
+{ **Odinova Digital Tiger©️** 🕵️‍♂️ }
 
 🤔 Where did everything go❓️ `Don't worry, just check Releases and you'll see you can download the old application as Odinova-OLD or you can directly download it through the link bellow ⤵️`
 
