@@ -1,7 +1,8 @@
 { **Odinova Digital Tiger©️** 🕵️‍♂️ }
 
-<img src="img/upcoming1.png" alt="Odinova Digital Tiger - Screenshot"/>
-<img src="img/upcoming2.png" alt="Odinova Digital Tiger - Screenshot"/>
+<img src="img/upcoming1.png" alt="Odinova Digital Tiger - Screenshot" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+<img src="img/upcoming2.png" alt="Odinova Digital Tiger - Screenshot" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+
 
 🤔 Where did everything go❓️ `Don't worry, just check Releases and you'll see you can download the old application as Odinova-OLD or you can directly download it through the link bellow ⤵️`
 
