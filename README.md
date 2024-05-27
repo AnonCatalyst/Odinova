@@ -1,5 +1,8 @@
 { **Odinova Digital Tiger©️** 🕵️‍♂️ }
 
+<img src="img/upcoming1.png" alt="Odinova Digital Tiger - Screenshot" width="550" height="430"/>
+<img src="img/upcoming2.png" alt="Odinova Digital Tiger - Screenshot" width="550" height="430"/>
+
 🤔 Where did everything go❓️ `Don't worry, just check Releases and you'll see you can download the old application as Odinova-OLD or you can directly download it through the link bellow ⤵️`
 
 [Odinova-old.zip](https://github.com/AnonCatalyst/Odinova/files/15425823/Odinova-old.zip)
