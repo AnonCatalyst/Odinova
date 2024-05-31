@@ -1,6 +1,6 @@
 { **Odinova Digital Tiger©️** 🕵️‍♂️ }
 
-*?TO-DO:* `ToolBox window`
+*?TO-DO:* `get imported tools to run in a new window instead of the terminal, then build the custom tools window`
 
 <img src="img/upcoming1.png" alt="Odinova Digital Tiger - Screenshot" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
 <img src="img/upcoming2.png" alt="Odinova Digital Tiger - Screenshot" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
