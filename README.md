@@ -2,7 +2,7 @@
 
 *?TO-DO:* `get imported tools to run in a new window instead of the terminal, then build the custom tools window`
 
--- **Support Server** `Help us grow our discord server or contact support by joining our support discord!` 
+-- **Support Server** `Help us grow our discord server or contact support by joining up today!` 
 - https://discord.com/invite/rwjNemwere
 
 <img src="img/upcoming1.png" alt="Odinova Digital Tiger - Screenshot" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
