@@ -1,6 +1,6 @@
 { **Odinova Digital Tiger©️** 🕵️‍♂️ }
 
-*?TO-DO:* `get imported tools to run in a new window instead of the terminal, then build the custom tools window`
+*?TO-DO:* `Create the Custom Tools window, and then release preparations`
 
 -- **Support Server** `Help us grow our discord server or contact support by joining up today!` 
 - https://discord.com/invite/rwjNemwere
