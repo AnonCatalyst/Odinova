@@ -1,6 +1,6 @@
 { **Odinova Digital Tiger©️** 🕵️‍♂️ }
 
-*?TO-DO:* `Fix broken imported tool launch menthod, Create the Custom Tools window, and then release preparations`
+*?TO-DO:* `Tool importing has been fixed but imported tool launching is still broke, Importing-tools is now being moving to its own seperate window and a new window will have tools from others already added and ready for use.`
 
 -- **Support Server** `Help us grow our discord server or contact support by joining up today!` 
 - https://discord.com/invite/rwjNemwere
