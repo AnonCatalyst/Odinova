@@ -1,6 +1,6 @@
 { **Odinova Digital Tiger©️** 🕵️‍♂️ }
 
-*?TO-DO:* `Tool importing has been fixed but imported tool launching is still broken, Importing-tools is now being moving to its own seperate window and a new window will have tools from others already added and ready for use.`
+*?TO-DO:* `Importing & launcing imported tools will be cut from Odinova and is planned to be introduced later, a new window will instead be made and hold tools built in and made my others. Odinova is now on a extended delay for release as i wanna make sure i bring the best to you`
 
 -- **Support Server** `Help us grow our discord server or contact support by joining up today!` 
 - https://discord.com/invite/rwjNemwere
