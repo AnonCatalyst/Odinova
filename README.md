@@ -1,8 +1,8 @@
 { **Odinova Digital Tiger©️** 🕵️‍♂️ }
 
-*?FINISHED-SO-FAR:+ `3 tools have been introduced to the OTWindow and each have there very own window that you can easily change between, you can also click a button to install tool requirements`
+*?FINISHED-SO-FAR:+ `Holehe and Blackbird have been fully integrated into gui form and setup in Odinova's toolbox.`
 
-*?TO-DO:* `Create the launching method and window items`
+*?TO-DO:* `Add 3 more tools to the Other Tools window, totalling to 5 tools for the Other tools window.`
 
 -- **Support Server** `Help us grow our discord server or contact support by joining up today!` 
 - https://discord.com/invite/rwjNemwere
