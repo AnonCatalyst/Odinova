@@ -1,6 +1,8 @@
 { **Odinova Digital Tiger©️** 🕵️‍♂️ }
 
-*?TO-DO:* `Importing & launcing imported tools will be cut from Odinova and is planned to be introduced later, a new window will instead be made and hold tools built in and made my others. Odinova is now on a extended delay for release as i wanna make sure i bring the best to you.`
+*?FINISHED-SO-FAR:+ `3 tools have been introduced to the OTWindow and each have there very own window that you can easily change between, you can also click a button to install tool requirements`
+
+*?TO-DO:* `Create the launching method and window items`
 
 -- **Support Server** `Help us grow our discord server or contact support by joining up today!` 
 - https://discord.com/invite/rwjNemwere
