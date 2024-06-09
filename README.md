@@ -1,8 +1,8 @@
 { **Odinova Digital Tiger©️** 🕵️‍♂️ }
 
-*?FINISHED-SO-FAR:+ `Holehe and Blackbird have been fully integrated into gui form and setup in Odinova's toolbox.`
+*?FINISHED-SO-FAR:+ `5 tools, Blackbird, Holehe, OnionSearch, PyDork, & Getrails have been added to the Other Tools window. Other Tools window is finished for now.`
 
-*?TO-DO:* `Add 3 more tools to the Other Tools window, totalling to 5 tools for the Other tools window.`
+*?TO-DO:* `Create the Custom Tools window and convert Ominis-Osint's inputs to be taken from command arguments. and create 4 additional tools for the Custom Tools window`
 
 -- **Support Server** `Help us grow our discord server or contact support by joining up today!` 
 - https://discord.com/invite/rwjNemwere
