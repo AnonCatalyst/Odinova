@@ -1,39 +1,21 @@
-Hard2Find DEV-CO Proprietary License
+MIT License
 
-This license is a legal agreement ("Agreement") between Hard2Find DEV-CO ("Licensor") and the individual or entity ("Licensee") accessing or using the software named Odinova ("Software"), developed by AnonCatalyst.
+Copyright (c) [2024] Hard2Find DEV-CO
 
-By accessing or using the Software, Licensee agrees to be bound by the terms of this Agreement.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-1. License Grant:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-Licensor grants Licensee a non-exclusive, non-transferable, revocable license to use the Software solely for Licensee's internal purposes.
-
-2. Restrictions:
-
-Licensee shall not:
-
-   a. Modify, adapt, translate, reverse engineer, decompile, disassemble, or create derivative works based on the Software;
-   b. Copy or distribute the Software, except as expressly permitted herein;
-   c. Remove any copyright, trademark, or other proprietary notices from the Software.
-
-3. Ownership:
-
-Licensor retains all right, title, and interest in and to the Software, including all intellectual property rights.
-
-4. Warranty Disclaimer:
-
-THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT.
-
-5. Limitation of Liability:
-
-IN NO EVENT SHALL LICENSOR BE LIABLE FOR ANY DAMAGES ARISING FROM OR RELATED TO THE USE OF THE SOFTWARE, INCLUDING BUT NOT LIMITED TO INDIRECT, INCIDENTAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES.
-
-6. Termination:
-
-This Agreement shall terminate automatically if Licensee breaches any of its terms. Upon termination, Licensee shall cease all use of the Software and destroy all copies thereof.
-
-7. Entire Agreement:
-
-This Agreement constitutes the entire understanding between the parties with respect to the subject matter hereof and supersedes all prior or contemporaneous agreements and understandings.
-
-By using the Software, Licensee agrees to be bound by the terms of this Agreement. If Licensee does not agree to these terms, Licensee must not use the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
