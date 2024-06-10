@@ -1,6 +1,6 @@
 { **Odinova Digital Tiger©️** 🕵️‍♂️ }
 
-*?FINISHED-SO-FAR:+ `5 tools, Blackbird, Holehe, OnionSearch, PyDork, & Getrails have been added to the Other Tools window. Other Tools window is finished for now.`
+*?FINISHED-SO-FAR:+ `5 tools, Blackbird, Holehe, UnderworldQuest, PyDork, & Getrails have been added to the Other Tools window. Other Tools window is finished for now.`
 
 *?TO-DO:* `Create the Custom Tools window and convert Ominis-Osint's inputs to be taken from command arguments. and create 4 additional tools for the Custom Tools window`
 
