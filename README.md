@@ -4,6 +4,9 @@
 
 *?TO-DO:* `convert Ominis-OSINT's inputs to be taken from command arguments, to help Ominis-OSINT run properly with Odinova. Then create 4 additional tools for the Custom Tools window Manager`
 
+## Future Update 0.1.1 Idea's 
+- Merge Ominis-OSINT into Odinova instead of relying on command for running Ominis-OSINT.
+
 -- **Support Server** `Help us grow our discord server or contact support by joining up today!` 
 - https://discord.com/invite/rwjNemwere
 
