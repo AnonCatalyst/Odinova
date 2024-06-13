@@ -2,7 +2,7 @@
 
 *?FINISHED-SO-FAR:+ `Custom Tools Window Manager`
 
-*?TO-DO:* `convert Ominis-OSINT's inputs to be taken from command arguments. and create 4 additional tools for the Custom Tools window`
+*?TO-DO:* `convert Ominis-OSINT's inputs to be taken from command arguments, to help Ominis-OSINT run properly with Odinova. Then create 4 additional tools for the Custom Tools window Manager`
 
 -- **Support Server** `Help us grow our discord server or contact support by joining up today!` 
 - https://discord.com/invite/rwjNemwere
