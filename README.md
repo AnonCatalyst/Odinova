@@ -24,4 +24,12 @@
 > ⚠️ **This tool is currently being rebuilt! see more of development progress through my instagram** 💪 
 ## About Odinova 
 
-> **Odinova Digital Tiger** is a powerful and user-friendly Open Source Intelligence (OSINT) tool designed to enhance digital reconnaissance capabilities. With its intuitive graphical user interface, Odinova provides a unified solution for various OSINT tasks, allowing users to efficiently gather information about a target. This tool is developed with the goal of empowering individuals and security professionals to conduct responsible and effective information gathering more efficiently.
+> **Odinova Digital Tiger** is a sophisticated and user-friendly Open Source Intelligence (OSINT) tool designed to significantly enhance digital reconnaissance capabilities. Featuring an intuitive graphical user interface, it offers a unified solution for various OSINT tasks, enabling users to gather information efficiently. 
+
+I would like to also mention two key features Odinova's side menu has: the Documenter and Documents.
+
+- **Documenter:** Allows users to manage large volumes of information by easily adding, deleting, and naming documentation files, each appearing in its own tabular window. Users can add multiple documentation files at once, further boosting productivity.
+
+- **Documents:** Functions as a file manager, enabling users to rename documents, delete created folders, and manage documents effectively. These integrated tools streamline OSINT information management, substantially speeding up tasks and improving efficiency. They also facilitate the saving and organizing of any information or notes taken during OSINT activities, leading to an impressive boost in overall productivity and effectiveness.
+
+While the tool has the potential to be highly valuable to detectives, cybersecurity experts, OSINT specialists, and others in related fields, its adoption and impact will ultimately depend on individual preferences and specific use cases within their respective workflows.
