@@ -1,8 +1,8 @@
 { **Odinova Digital Tiger©️** 🕵️‍♂️ }
 
-*?FINISHED-SO-FAR:+ `Custom Tools Window Manager`
-
-*?TO-DO:* `convert Ominis-OSINT's inputs to be taken from command arguments, to help Ominis-OSINT run properly with Odinova. Then create 4 additional tools for the Custom Tools window Manager`
+## WARNING ⚠️
+`the proxy site Ominis-OSINT uses is experiencing an outage. Due to this, I have decided to make Odinova entirely free and open-source for everyone.
+To compensate I have decided to also release a beta of Odinova that is only missing its Custom Tools window due to the recent issue with Ominis-OSINT.`
 
 ## Future Update 0.1.1 Idea's 
 - Merge Ominis-OSINT into Odinova instead of relying on command for running Ominis-OSINT.
