@@ -62,12 +62,12 @@ Odinova Digital Tiger is an advanced application designed for Open-Source Intell
   - **Status Updates:** Updates a QLabel to inform users about search progress and completion.
   - **Results Display:** Utilizes QTextEdit to display detailed search results for comprehensive analysis.
 
-### Documenter: Markdown Document Management
+### Documenter: Document Management
 
-**Purpose:** Manages and documents investigative findings through Markdown files.
+**Purpose:** Manages and documents investigative findings through documentation files.
 
 - **Features:**
-  - **Tabbed Interface:** Allows users to manage multiple Markdown files simultaneously using QTabWidget.
+  - **Tabbed Interface:** Allows users to manage multiple doc files simultaneously using QTabWidget.
   - **Markdown Rendering:** Converts Markdown content into HTML for clear and structured presentation using QTextBrowser.
   - **File Operations:** Supports operations such as saving all documents, importing Markdown files, and opening existing files.
   - **Dark Theme Integration:** Implements a dark theme interface for enhanced readability and reduced eye strain during prolonged use.
