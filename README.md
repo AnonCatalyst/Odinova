@@ -1,8 +1,9 @@
 { **Odinova Digital Tiger©️** 🕵️‍♂️ }
 
-## WARNING ⚠️
-`the proxy site Ominis-OSINT uses is experiencing an outage. Due to this, I have decided to make Odinova entirely free and open-source for everyone.
-To compensate I have decided to also release a beta of Odinova that is only missing its Custom Tools window due to the recent issue with Ominis-OSINT.`
+## HOW TO INSTALL/RUN?
+- ```git clone https://github.com/AnonCatalyst/Odinova && cd Odinova```
+- ```pip install -r requirements.txt --break-system-packages```
+- ```python3 odinova.py```
 
 ## Future Update 0.1.1 Idea's 
 - Merge Ominis-OSINT into Odinova instead of relying on command for running Ominis-OSINT.
