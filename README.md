@@ -1,4 +1,4 @@
-{ **Odinova Digital Tiger©️** 🕵️‍♂️ }
+{ **Odinova Digital Tiger:BETA:©️** 🕵️‍♂️ }
 
 ## HOW TO INSTALL/RUN?
 - ```git clone https://github.com/AnonCatalyst/Odinova && cd Odinova```
