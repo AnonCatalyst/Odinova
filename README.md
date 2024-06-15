@@ -10,26 +10,83 @@ To compensate I have decided to also release a beta of Odinova that is only miss
 -- **Support Server** `Help us grow our discord server or contact support by joining up today!` 
 - https://discord.com/invite/rwjNemwere
 
-<img src="img/upcoming1.png" alt="Odinova Digital Tiger - Screenshot" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
-<img src="img/upcoming2.png" alt="Odinova Digital Tiger - Screenshot" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+<img src="img/screenshot.png" alt="Odinova Digital Tiger - Screenshot" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+# Odinova Digital Tiger: Comprehensive Overview
 
+Odinova Digital Tiger is an advanced application designed for Open-Source Intelligence (OSINT), equipped with versatile tools and a user-friendly interface to streamline investigative workflows and enhance data analysis capabilities.
 
-🤔 Where did everything go❓️ `Don't worry, just check Releases and you'll see you can download the old application as Odinova-OLD or you can directly download it through the link bellow ⤵️`
+## Key Components and Features
 
-[Odinova-old.zip](https://github.com/AnonCatalyst/Odinova/files/15425823/Odinova-old.zip)
-> This is the release of _Odinova_ that was previously known as **Scavenger OSINT GUI**.
+### Holehe: Email Registry Search
 
+**Purpose:** Performs email reconnaissance across various platforms without alerting targets.
 
-## REBUILD CONSTRUCTION ACTIVE 🚧 
-> ⚠️ **This tool is currently being rebuilt! see more of development progress through my instagram** 💪 
-## About Odinova 
+- **Features:**
+  - **Email Input:** Allows users to enter an email for searching.
+  - **Options:** Includes checkboxes for creating CSV reports and searching for only used accounts.
+  - **Output Display:** Shows detailed results in a QTextEdit widget.
+  - **Status Updates:** Provides real-time updates on the tool's progress and completion.
 
-> **Odinova Digital Tiger** is a sophisticated and user-friendly Open Source Intelligence (OSINT) tool designed to significantly enhance digital reconnaissance capabilities. Featuring an intuitive graphical user interface, it offers a unified solution for various OSINT tasks, enabling users to gather information efficiently. 
+### SubWindow2: Social Media Search
 
-I would like to also mention two key features Odinova's side menu has: the Documenter and Documents.
+**Purpose:** Enables users to search social media platforms for specific email addresses.
 
-- **Documenter:** Allows users to manage large volumes of information by easily adding, deleting, and naming documentation files, each appearing in its own tabular window. Users can add multiple documentation files at once, further boosting productivity.
+- **Features:**
+  - **Interface:** Provides a clean interface with descriptive labels and input fields.
+  - **Checkboxes:** Allows users to specify options like creating CSV reports and searching for used accounts only.
+  - **Execution:** Runs searches in a separate thread to prevent UI blocking.
+  - **Output:** Displays results in a QTextEdit widget, ensuring clear visibility of findings.
 
-- **Documents:** Functions as a file manager, enabling users to rename documents, delete created folders, and manage documents effectively. These integrated tools streamline OSINT information management, substantially speeding up tasks and improving efficiency. They also facilitate the saving and organizing of any information or notes taken during OSINT activities, leading to an impressive boost in overall productivity and effectiveness.
+### PyDorkWindow: Web Search
 
-While the tool has the potential to be highly valuable to detectives, cybersecurity experts, OSINT specialists, and others in related fields, its adoption and impact will ultimately depend on individual preferences and specific use cases within their respective workflows.
+**Purpose:** Facilitates web searches across multiple search engines for specified queries.
+
+- **Features:**
+  - **Search Engines:** Supports Google, DuckDuckGo, and Onion network searches.
+  - **User Interface:** Provides intuitive input fields and buttons for seamless search execution.
+  - **Output Display:** Utilizes QTextEdit for presenting search results, ensuring readability.
+  - **Real-time Updates:** Updates status labels to reflect search progress and completion.
+
+### UnderworldQuestWindow: Deep Web Exploration
+
+**Purpose:** Explores the depths of the web for hidden sites based on user queries.
+
+- **Features:**
+  - **Search Options:** Includes fields for entering search queries and specifying search amounts.
+  - **Proxy Support:** Provides an option to perform searches with proxy settings.
+  - **Status Updates:** Updates a QLabel to inform users about search progress and completion.
+  - **Results Display:** Utilizes QTextEdit to display detailed search results for comprehensive analysis.
+
+### Documenter: Markdown Document Management
+
+**Purpose:** Manages and documents investigative findings through Markdown files.
+
+- **Features:**
+  - **Tabbed Interface:** Allows users to manage multiple Markdown files simultaneously using QTabWidget.
+  - **Markdown Rendering:** Converts Markdown content into HTML for clear and structured presentation using QTextBrowser.
+  - **File Operations:** Supports operations such as saving all documents, importing Markdown files, and opening existing files.
+  - **Dark Theme Integration:** Implements a dark theme interface for enhanced readability and reduced eye strain during prolonged use.
+
+### ResourcesWindow: Markdown File Viewer
+
+**Purpose:** Provides a centralized view of Markdown files stored within the application.
+
+- **Features:**
+  - **Tabbed Navigation:** Presents Markdown files in a tabbed interface using QTabWidget for organized access.
+  - **HTML Rendering:** Converts Markdown content to HTML for display using QTextBrowser within a scrollable area.
+  - **Import Functionality:** Allows users to import additional Markdown files from external sources using QFileDialog.
+  - **Dark Theme Support:** Applies a dark theme to the interface for improved user experience and readability.
+
+## Application Benefits for OSINT
+
+Odinova Digital Tiger enhances OSINT operations by:
+
+- **Centralized Tools:** Integrates diverse tools for email reconnaissance, social media analysis, web searches, and deep web exploration into a unified platform.
+- **Efficient Data Management:** Facilitates the organization, storage, and retrieval of investigative findings through structured interfaces and file management functionalities.
+- **Enhanced Collaboration:** Promotes collaboration among investigators by providing shared resources and real-time updates on search progress and results.
+- **Comprehensive Documentation:** Supports thorough documentation of intelligence findings through Markdown files, ensuring clarity, accessibility, and preservation of investigative insights.
+
+## Conclusion
+
+Odinova Digital Tiger represents a robust solution for OSINT practitioners, offering a comprehensive suite of tools and functionalities tailored to streamline investigative workflows, enhance data analysis capabilities, and promote effective collaboration. By combining powerful tools with intuitive interfaces, the application empowers users to conduct thorough investigations, manage findings efficiently, and document insights effectively within a secure and user-friendly environment.
+
