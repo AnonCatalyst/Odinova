@@ -89,7 +89,7 @@ Odinova Digital Tiger enhances OSINT operations by:
 - **Centralized Tools:** Integrates diverse tools for email reconnaissance, social media analysis, web searches, and deep web exploration into a unified platform.
 - **Efficient Data Management:** Facilitates the organization, storage, and retrieval of investigative findings through structured interfaces and file management functionalities.
 - **Enhanced Collaboration:** Promotes collaboration among investigators by providing shared resources and real-time updates on search progress and results.
-- **Comprehensive Documentation:** Supports thorough documentation of intelligence findings through Markdown files, ensuring clarity, accessibility, and preservation of investigative insights.
+- **Comprehensive Documentation:** Supports thorough documentation of intelligence findings through documentation files, ensuring clarity, accessibility, and preservation of investigative insights.
 
 ## Conclusion
 
