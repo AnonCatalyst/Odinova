@@ -207,7 +207,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("ODINOVA - Digital Tiger:  'Community Edition'")
+        self.setWindowTitle("ODINOVA - Digital Tiger:  'BETA'")
         self.setGeometry(100, 100, 1080, 600)
 
         self.side_menu_closed = False
