@@ -6,7 +6,7 @@
 - ```python3 odinova.py```
 
 ## FULL-RELEASE: 
-`The full release of Odinova is expected in the near future, check back later or try the **BETA**. Odinova currently has 2 placeholder banners for the contacts window and the toolbox window`
+`The full release of Odinova is expected in the near future, check back later or try the *BETA*. Odinova currently has 2 placeholder banners for the contacts window and the toolbox window`
 
 ## Future Update 0.1.1 Idea's 
 - Merge Ominis-OSINT into Odinova instead of relying on command for running Ominis-OSINT.
