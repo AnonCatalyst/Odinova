@@ -29,7 +29,7 @@ Odinova Digital Tiger is an advanced application designed for Open-Source Intell
   - **Output Display:** Shows detailed results in a QTextEdit widget.
   - **Status Updates:** Provides real-time updates on the tool's progress and completion.
 
-### SubWindow2: Social Media Search
+### Blackbird: Social Media Search
 
 **Purpose:** Enables users to search social media platforms for specific email addresses.
 
@@ -39,7 +39,7 @@ Odinova Digital Tiger is an advanced application designed for Open-Source Intell
   - **Execution:** Runs searches in a separate thread to prevent UI blocking.
   - **Output:** Displays results in a QTextEdit widget, ensuring clear visibility of findings.
 
-### PyDorkWindow: Web Search
+### PyDork: Web Search
 
 **Purpose:** Facilitates web searches across multiple search engines for specified queries.
 
