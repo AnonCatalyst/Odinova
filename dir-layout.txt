@@ -1,0 +1,68 @@
+project_directory/
+│
+├── src/
+│   ├── windows/  
+│   │   ├── CT/
+│   │   │   ├── Ominis-OSINT/
+│   │   │   │     ├── requirements.txt
+│   │   │   │     └── ominis.py
+│   │   │   │
+│   │   │   ├── ctwindow_1.py
+│   │   │   ├── ctwindow_2.py
+│   │   │   ├── ctwindow_3.py
+│   │   │   ├── ctwindow_4.py
+│   │   │   ├── ctwindow_5.py
+│   │   │   │ 
+│   │   ├── ottools/
+│   │   │   └── {parent-dir-of-installed-git-repos-for-running}
+│   │   │
+│   │   ├── main_window.py
+│   │   ├── main_sidemenu.py
+│   │   ├── docs_window.py
+│   │   ├── settings_window.py
+│   │   ├── documenter.py
+│   │   ├── resources_window.py
+│   │   ├── ot_window.py   
+│   │   ├── ct_window.py
+│   │   ├── toolbox_window.py
+│   │   ├── sub_window1.py {Blackbird}
+│   │   ├── sub_window2.py (Holehe}
+│   │   ├── pydork_window.py {PyDork}
+│   │   ├── getrails_window.py {Getrails}
+│   │   ├── underworldquest_window.py {Underworld}
+│   │   ├── url_validator.py
+│   │   └── __init__.py
+│   │
+│   ├── core/
+│   │   ├── __init__.py
+│   │   ├── design_handler.py
+│   │   ├── input_handler.py
+│   │   ├── settings.py
+│   │   └── __init__.py
+│   │
+│   ├── configs/
+│   │   └── bg-config.json
+│   │
+│   ├── docs/
+│   │   └── placeholder
+│   │
+│   ├── assets/
+│   │   ├── backgrounds/
+│   │   │   ├── bg-1.png
+│   │   │   ├── bg-2.png
+│   │   │   ├── bg-3.png
+│   │   │   ├── bg-4.png
+│   │   │   ├── default.png
+│   │   │   └── contacts.png
+│   │   └── icons/
+│   │       ├── main_icon.png
+│   │       ├── side_logo.png
+│   │       └── install.png
+│   │
+│   ├── md/  # Folder containing markdown files
+│   │   └── example.md
+│   │
+│   ├── app.py
+│   └── __init__.py
+│
+└── odinova.py

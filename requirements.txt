@@ -1,0 +1,5 @@
+PyQt6
+requests
+numpy
+markdown
+gitpython
