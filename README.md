@@ -16,7 +16,7 @@
 
 <img src="img/screenshot.png" alt="Odinova Digital Tiger - Screenshot" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
 
-# Odinova Digital Tiger: Comprehensive Overview
+# Odinova Digital Tiger: Overview
 
 Odinova Digital Tiger is an advanced application designed for Open-Source Intelligence (OSINT), equipped with versatile tools and a user-friendly interface to streamline investigative workflows and enhance data analysis capabilities.
 
