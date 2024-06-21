@@ -5,7 +5,7 @@
 - ```pip install -r requirements.txt --break-system-packages```
 - ```python3 odinova.py```
 
-## FULL-RELEASE: 
+## FULL-RELEASE: (in-development)
 `The full release of Odinova is expected in the near future, check back later or try the *BETA*. Odinova currently has 2 placeholder banners for the contacts window and the toolbox window`
 
 -- **Support Server** `Help us grow our discord server or contact support by joining up today!` 
