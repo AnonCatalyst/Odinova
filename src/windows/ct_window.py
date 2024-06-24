@@ -6,8 +6,8 @@ class CTWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.custom_window_names = {
-            1: "Ominis-OSINT[UNAVAILABLE!]",
-            2: "Placeholder Window 2",
+            1: "Ominis-OSINT",
+            2: "AliaStorm",
             3: "Placeholder Window 3",
             4: "Placeholder Window 4",
             5: "Placeholder Window 5"
@@ -15,7 +15,7 @@ class CTWindow(QMainWindow):
         self.initUI()
 
     def initUI(self):
-        self.setWindowTitle("Odinova Digital Tiger:BETA: CT Window Manager [UNAVAILABLE!]")
+        self.setWindowTitle("Odinova Digital Tiger:BETA: CT Window Manager")
         self.setGeometry(100, 100, 1000, 685)
 
         central_widget = QWidget(self)
@@ -115,9 +115,9 @@ class CTWindow(QMainWindow):
         layout.addWidget(self.display_container)
 
     def load_window(self, index):
-        if index == 1:
-            QMessageBox.warning(self, "Under Construction", "This window is currently under construction and cannot be loaded.", QMessageBox.StandardButton.Ok)
-            return
+        #if index == 1:
+            #QMessageBox.warning(self, "Under Construction", "This window is currently under construction and cannot be loaded.", QMessageBox.StandardButton.Ok)
+            #return
         
         module_name = f'src.windows.CT.ctwindow_{index}'
         class_name = f'CTWindow{index}'

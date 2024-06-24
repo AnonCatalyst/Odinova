@@ -1,0 +1,13 @@
+beautifulsoup4
+colorama
+fake_useragent
+requests
+google-search-results
+httpx
+tenacity
+requests_html
+aiohttp
+urllib3
+asyncio
+lxml_html_clean
+html_clean

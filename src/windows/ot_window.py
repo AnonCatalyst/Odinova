@@ -11,7 +11,7 @@ from src.windows.underworldquest_window import UnderworldQuestWindow  # Import U
 class OTWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Odinova Digital Tiger:  'Other Tools' | OT Window Manager")
+        self.setWindowTitle("Odinova Digital Tiger:  'TOOLBOX | Other Tools'")
         self.setGeometry(100, 100, 800, 650)
         self.setWindowIcon(QIcon("src/assets/icons/main_icon.png"))
         
