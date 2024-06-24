@@ -58,7 +58,7 @@ class CTWindow1(QWidget):
         self.layout.addWidget(self.optional_group)
 
         # Run Script button
-        self.run_button = QPushButton("Run Script")
+        self.run_button = QPushButton("Run Ominis-OSINT")
         self.run_button.clicked.connect(self.run_script)
         self.layout.addWidget(self.run_button)
 
