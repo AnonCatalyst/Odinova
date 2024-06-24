@@ -6,7 +6,7 @@
 - ```python3 odinova.py```
 
 ## FULL-RELEASE: (in-development)
-`The full release of Odinova is expected in the near future, check back later or try the *BETA*. Odinova currently has 2 placeholder banners for the contacts window and the toolbox window`
+`The full release of Odinova is expected in the near future, check back later or try the *BETA*. Odinova currently has 1 placeholder banner for the contacts window`
 
 -- **Support Server** `Help us grow our discord server or contact support by joining up today!` 
 - https://discord.com/invite/rwjNemwere
