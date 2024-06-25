@@ -7,6 +7,10 @@ project_directory/
 │   │   │   │     ├── requirements.txt
 │   │   │   │     └── ominis.py
 │   │   │   │
+│   │   │   ├── AliaStorm/
+│   │   │   │     ├── requirements.txt
+│   │   │   │     └── aliastorm.py
+│   │   │   │
 │   │   │   ├── ctwindow_1.py
 │   │   │   ├── ctwindow_2.py
 │   │   │   ├── ctwindow_3.py
