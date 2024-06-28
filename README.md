@@ -1,5 +1,8 @@
 { **Odinova Digital Tiger:BETA:©️** 🕵️‍♂️ }
 
+## WebDiver
+- Website crawler coming to Odinova (in-development)
+
 ## HOW TO INSTALL/RUN?
 - ```git clone https://github.com/AnonCatalyst/Odinova && cd Odinova```
 - ```pip install -r requirements.txt --break-system-packages```
