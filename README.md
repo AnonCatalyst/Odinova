@@ -1,10 +1,14 @@
 { **Odinova Digital Tiger:BETA:©️** 🕵️‍♂️ }
 
+> **Custom Tools Window**
+- `2 of 5 tools completed (Ominis-OSINT)/(AliaStorm).`
+- `2 tools in development and preparation to integrate with Odinova, which then 4 of 5 tools would be completed.`
+
 ## WebDiver
 - Website Crawler coming to Odinova (in-development).
 
 ## WebHound
-- Multi engine search version of Ominis-OSINT, Expecting integration with Odinova aswell as substantial updates and changes.
+- Multi engine search version of Ominis-OSINT, Expecting integration with Odinova aswell as substantial updates and changes (in-development).
 
 ## HOW TO INSTALL/RUN?
 - ```git clone https://github.com/AnonCatalyst/Odinova && cd Odinova```
