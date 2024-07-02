@@ -1,7 +1,10 @@
 { **Odinova Digital Tiger:BETA:©️** 🕵️‍♂️ }
 
 ## WebDiver
-- Website Crawler coming to Odinova (in-development)
+- Website Crawler coming to Odinova (in-development).
+
+## WebHound
+- Multi engine search version of Ominis-OSINT, Expecting integration with Odinova aswell as substantial updates and changes.
 
 ## HOW TO INSTALL/RUN?
 - ```git clone https://github.com/AnonCatalyst/Odinova && cd Odinova```
