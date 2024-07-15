@@ -1,5 +1,7 @@
 { **Odinova Digital Tiger:BETA:©️** 🕵️‍♂️ }
 
+# **WARNING** ▪︎ Development paused momentarily while backdropbuild session v5 is active. July-8th > August-3rd
+
 > **Custom Tools Window**
 - `2 of 5 tools completed (Ominis-OSINT)/(AliaStorm).`
 - `2 tools in development and preparation to integrate with Odinova, which then 4 of 5 tools would be completed.`
