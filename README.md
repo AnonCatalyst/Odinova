@@ -1,6 +1,6 @@
 { **Odinova Digital Tiger:BETA:©️** 🕵️‍♂️ }
 
-> **Custom Tools Window** `Visual remodel expected, as well as a finished custom tools window.`
+> **Custom Tools Window** `Under construction...`
 
 ## WebDiver
 - Website Crawler coming to Odinova (in-development).
