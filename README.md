@@ -3,12 +3,6 @@
 > **UP-COMMING** `Under construction... OT-WINDOW UPDATE COMMING SOON!`
 - **Finished**: ``CT-Window.(Custom Tools Window)``
 
-## WebDiver
-- Website Crawler coming to Odinova (in-development).
-
-## WebHound
-- Multi engine search version of Ominis-OSINT, Expecting integration with Odinova aswell as substantial updates and changes (in-development).
-
 ## HOW TO INSTALL/RUN?
 - ```git clone https://github.com/AnonCatalyst/Odinova && cd Odinova```
 - ```pip install -r requirements.txt --break-system-packages```
