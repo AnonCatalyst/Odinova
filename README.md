@@ -27,13 +27,9 @@ Odinova Digital Tiger is an advanced application designed for Open-Source Intell
   - **File Operations:** Supports operations such as saving all documents, importing Markdown files, and opening existing files.
   - **Dark Theme Integration:** Implements a dark theme interface for enhanced readability and reduced eye strain during prolonged use.
 
-<div style="display: flex; align-items: center;">
-
-  <img src="screenshot-1.png" alt="Screenshot 1" style="margin-right: 10px;"/>
-  <img src="screenshot-2.png" alt="Screenshot 2" style="margin-right: 10px;"/>
-  <img src="screenshot-3.png" alt="Screenshot 3"/>
-
-</div>
+<img src="screenshot-1.png" alt="Screenshot 1" style="margin-right: 10px;"/>
+<img src="screenshot-2.png" alt="Screenshot 2" style="margin-right: 10px;"/>
+<img src="screenshot-3.png" alt="Screenshot 3"/>
 
 ### ResourcesWindow: Markdown File Viewer
 
