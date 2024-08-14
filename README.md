@@ -1,6 +1,7 @@
 { **Odinova Digital Tiger:BETA:©️** 🕵️‍♂️ }
 
-> **Custom Tools Window** `Under construction...  CT-WINDOW FINISHED, OT-WINDOW UPDATE COMMING SOON!`
+> **UP-COMMING** `Under construction... OT-WINDOW UPDATE COMMING SOON!`
+- **Finished**: ``CT-Window.(Custom Tools Window)``
 
 ## WebDiver
 - Website Crawler coming to Odinova (in-development).
