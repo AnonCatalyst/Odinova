@@ -28,9 +28,9 @@ Odinova Digital Tiger is an advanced application designed for Open-Source Intell
   - **Dark Theme Integration:** Implements a dark theme interface for enhanced readability and reduced eye strain during prolonged use.
 
 <p>
-  <img src="screenshot-1.png" alt="Screenshot 1" width="300" style="margin-right: 10px;"/>
-  <img src="screenshot-2.png" alt="Screenshot 2" width="300" style="margin-right: 10px;"/>
-  <img src="screenshot-3.png" alt="Screenshot 3" width="300"/>
+  <img src="img/screenshot-1.png" alt="Screenshot 1" width="300" style="margin-right: 10px;"/>
+  <img src="img/screenshot-2.png" alt="Screenshot 2" width="300" style="margin-right: 10px;"/>
+  <img src="img/screenshot-3.png" alt="Screenshot 3" width="300"/>
 </p>
 
 ### ResourcesWindow: Markdown File Viewer
