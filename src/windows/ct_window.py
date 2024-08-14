@@ -8,15 +8,15 @@ class CTWindow(QMainWindow):
         self.custom_window_names = {
             1: "Ominis-OSINT",
             2: "AliaStorm",
-            3: "Placeholder Window 3",
-            4: "Placeholder Window 4",
-            5: "Placeholder Window 5"
+            3: "WebHound",
+            4: "DepthSearch",
+            5: "WebDiver"
         }
         self.initUI()
 
     def initUI(self):
-        self.setWindowTitle("Odinova Digital Tiger:BETA: CT Window Manager")
-        self.setGeometry(100, 100, 1000, 685)
+        self.setWindowTitle("Odinova Digital Tiger: CT Window Manager")
+        self.setGeometry(100, 100, 1000, 640)
 
         central_widget = QWidget(self)
         self.setCentralWidget(central_widget)
