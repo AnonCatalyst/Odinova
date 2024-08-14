@@ -200,7 +200,6 @@ class CTWindow5(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("CTWindow5: WebDiver")
-        self.setGeometry(100, 100, 800, 600)
 
         self.central_widget = QWidget()
         self.setCentralWidget(self.central_widget)
