@@ -15,4 +15,5 @@ urllib3
 asyncio
 lxml_html_clean
 html_clean
-zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability
+psutil
+aiohttp
