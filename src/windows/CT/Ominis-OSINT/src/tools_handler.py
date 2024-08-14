@@ -54,16 +54,12 @@ show_message = None
 
 async def make_request_async(url, proxies=None):
     retry_count = 0
-    global show_message  # Using global variable for caching user's response
     while retry_count < MAX_RETRY_COUNT:
         try:
             async with httpx.AsyncClient() as client:
                 if proxies:
                     proxy = random.choice(proxies)
-                    if show_message is None:
-                        show_message = await ask_to_show_message()
-                    if show_message:
-                        print(f"  {Fore.LIGHTBLACK_EX}Rotated to Proxy{Fore.YELLOW}:{Fore.LIGHTBLACK_EX} {proxy} Avoiding detection{Fore.RED}! {Style.RESET_ALL}")
+                    print(f"  {Fore.LIGHTBLACK_EX}Rotated to Proxy{Fore.YELLOW}:{Fore.LIGHTBLACK_EX} {proxy} Avoiding detection{Fore.RED}! {Style.RESET_ALL}")
                     client.proxies = {"http://": proxy}
 
                 client.headers = {"User-Agent": UserAgent().random.strip()}  # Strip extra spaces
@@ -86,22 +82,20 @@ async def make_request_async(url, proxies=None):
             retry_count += 1
             logger.info(f"{Fore.LIGHTBLACK_EX} Retrying request {retry_count}{Fore.LIGHTBLACK_EX}/{MAX_RETRY_COUNT}{Fore.RED}...{Style.RESET_ALL}")
             await asyncio.sleep(7 * retry_count)  # Exponential backoff for retries
-            if retry_count < MAX_RETRY_COUNT:
-                await asyncio.sleep(6 * retry_count)  # Exponential backoff for retries
-            else:
+            if retry_count >= MAX_RETRY_COUNT:
                 raise RuntimeError(f"Failed to make connection after {MAX_RETRY_COUNT} retries{Fore.YELLOW}: {e}{Style.RESET_ALL}")
 
     logger.info("Final retry using DuckDuckGo...")
     return await fetch_ddg_results(url)
 
-async def ask_to_show_message():
-    print(f'{Fore.RED}_' * 80 + "\n")
-    #print(f" {Fore.RED}[{Fore.YELLOW}!{Fore.RED}]{Fore.WHITE} Enable proxy rotation display? {Fore.LIGHTBLACK_EX}({Fore.WHITE}y{Fore.LIGHTBLACK_EX}/{Fore.WHITE}n{Fore.LIGHTBLACK_EX}){Fore.YELLOW}:{Style.RESET_ALL} ")
-    return False  # Assume default choice is 'n'
 
-
-
-
+#async def ask_to_show_message():
+#    global show_message
+#    if show_message is None:
+#        response = input(f'{Fore.RED}_' * 80 + "\n" +
+#                         f" {Fore.RED}[{Fore.YELLOW}!{Fore.RED}]{Fore.WHITE} Enable proxy rotation display? {Fore.LIGHTBLACK_EX}({Fore.WHITE}y{Fore.LIGHTBLACK_EX}/{Fore.WHITE}n{Fore.LIGHTBLACK_EX}){Fore.YELLOW}:{Style.RESET_ALL} ").strip().lower()
+#        show_message = response == 'y'
+#    return show_message
 
 async def fetch_ddg_results(query):
     ddg_search_url = f"https://html.duckduckgo.com/html/?q={query}"
@@ -122,8 +116,9 @@ async def fetch_ddg_results(query):
             logger.error(f"Request error occurred during DuckDuckGo search: {e}")
             raise
 
+
 async def follow_redirects_async(url):
-    MAX_REDIRECTS = 4  # Define the maximum number of redirects to prevent infinite loops
+    MAX_REDIRECTS = 4
     redirect_count = 0
     while redirect_count < MAX_REDIRECTS:
         async with httpx.AsyncClient() as client:
@@ -144,6 +139,7 @@ async def follow_redirects_async(url):
                 raise
     logger.error("Exceeded maximum number of redirects.")
     return None
+
 
 
 async def fetch_google_results(query, language=None, country=None, date_range=None, proxies=None):
