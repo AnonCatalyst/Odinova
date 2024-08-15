@@ -12,7 +12,7 @@ import argparse
 init(autoreset=True)
 
 # Set up logging
-logging.basicConfig(filename='src/username_search.log', level=logging.INFO,
+logging.basicConfig(filename='src/logs/username_search.log', level=logging.INFO,
                     format="%(asctime)s - %(levelname)s - %(message)s")
 
 # Set up file for saving results
