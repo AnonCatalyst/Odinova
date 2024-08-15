@@ -1,6 +1,7 @@
 from PyQt6.QtWidgets import QWidget, QVBoxLayout, QTabWidget, QTextEdit, QPushButton, QHBoxLayout, QFileDialog, QMessageBox, QCheckBox
-from PyQt6.QtGui import QIcon, QTextCursor, QAction
+from PyQt6.QtGui import QIcon, QTextCursor
 from PyQt6.QtCore import Qt, QDateTime, QFile, QTextStream
+import os
 
 class LoggingWindow(QWidget):
     def __init__(self, parent=None):
@@ -66,10 +67,7 @@ class LoggingWindow(QWidget):
         self.setLayout(layout)
 
     def toggle_interaction_logs(self, state):
-        if state == Qt.CheckState.Checked:
-            self.log_interaction_checkbox.setChecked(True)
-        else:
-            self.log_interaction_checkbox.setChecked(False)
+        self.log_interaction_checkbox.setChecked(state == Qt.CheckState.Checked)
 
     def log_interaction(self, message):
         if self.log_interaction_checkbox.isChecked():
@@ -118,3 +116,19 @@ class LoggingWindow(QWidget):
             text_stream << self.error_logs.toPlainText() << "\n\n"
         QMessageBox.information(self, "Logs Saved", f"Logs saved to:\n{file_path}")
 
+    def load_logs(self):
+        log_directory = "src/logs"
+        interaction_log_file_path = os.path.join(log_directory, "interactions.log")
+        error_log_file_path = os.path.join(log_directory, "errors.log")
+
+        # Load interaction logs
+        if os.path.exists(interaction_log_file_path):
+            with open(interaction_log_file_path, "r") as log_file:
+                interaction_logs = log_file.read()
+                self.interaction_logs.setPlainText(interaction_logs)
+
+        # Load error logs
+        if os.path.exists(error_log_file_path):
+            with open(error_log_file_path, "r") as log_file:
+                error_logs = log_file.read()
+                self.error_logs.setPlainText(error_logs)
