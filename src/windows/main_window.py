@@ -5,7 +5,7 @@ import time
 import threading
 from PyQt6.QtWidgets import QApplication, QGroupBox, QGridLayout
 from PyQt6.QtWidgets import QMainWindow, QHBoxLayout, QPushButton, QToolBar, QWidget, QFrame, QVBoxLayout, QLabel, QLineEdit
-from PyQt6.QtCore import QTimer, QRect, QPropertyAnimation, Qt, QObject, pyqtSignal, QEasingCurve, QRectF
+from PyQt6.QtCore import QTimer, QRect, QPropertyAnimation, Qt, QObject, pyqtSignal, QEasingCurve, QRectF, QDateTime
 from src.core.design_handler import DesignHandler
 from src.core.settings import Settings
 from src.windows.main_sidemenu import SideMenu
@@ -16,6 +16,7 @@ from src.windows.documenter import Documenter
 from src.core.design_handler import DesignHandler
 from src.windows.resources_window import ResourcesWindow
 from src.windows.toolbox_window import ToolBoxWindow
+from src.logging import LoggingWindow
 from PyQt6.QtGui import QPixmap, QPainter, QColor, QBrush, QImage, QPen, QPalette
 
 
@@ -207,6 +208,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
+        self.logging_window = None  
         self.setWindowTitle("ODINOVA - Digital Tiger:  'BETA'")
         self.setGeometry(100, 100, 1080, 600)
 
@@ -244,7 +246,6 @@ class MainWindow(QMainWindow):
             elif button.objectName() == "TOOLBOX":
                 button.clicked.connect(self.open_toolbox)
 
-
         # Separator line
         self.separator_line = QFrame()
         self.separator_line.setFrameShape(QFrame.Shape.VLine)
@@ -281,32 +282,40 @@ class MainWindow(QMainWindow):
         self.contacts_button.clicked.connect(self.open_contacts)
         settings_toolbar.addWidget(self.contacts_button)
 
+        self.logging_button = QPushButton("Logging")
+        self.logging_button.clicked.connect(self.open_logging_window)
+        settings_toolbar.addWidget(self.logging_button)
+
     def open_settings(self):
         self.settings_window = SettingsWindow(self)
         self.settings_window.show()
+        self.log_interaction("Settings button clicked - Settings window opened")
 
     def go_to_home(self):
         self.clear_HOME_layout()
-
         self.slideshow_widget = SlideshowWidget()
         self.HOME_layout.addWidget(self.slideshow_widget)
+        self.log_interaction("Home button clicked - Home window opened")
 
     def open_contacts(self):
         self.clear_HOME_layout()
         contacts_widget = ContactsWidget()
         self.HOME_layout.addWidget(contacts_widget)
+        self.log_interaction("Contacts button clicked - Contacts window opened")
 
     def open_documents(self):
         self.clear_HOME_layout()
         documents_widget = DocumentsWindow()
         documents_widget.open_document.connect(self.open_document_in_documenter)
         self.HOME_layout.addWidget(documents_widget)
+        self.log_interaction("Documents button clicked - Documents window opened")
 
     def open_document_in_documenter(self, file_path):
         self.clear_HOME_layout()
         documenter_widget = Documenter()
         documenter_widget.load_file(file_path)
         self.HOME_layout.addWidget(documenter_widget)
+        self.log_interaction("Opened a document from Documents window into Documenter")
 
     def clear_HOME_layout(self):
         while self.HOME_layout.count():
@@ -318,17 +327,44 @@ class MainWindow(QMainWindow):
         self.clear_HOME_layout()
         documenter_widget = Documenter()
         self.HOME_layout.addWidget(documenter_widget)
+        self.log_interaction("Documenter button clicked - Documenter window opened")
 
     def open_toolbox(self):
-        # Set up ToolBoxWindow
         self.clear_HOME_layout()
         tool_box_window = ToolBoxWindow()
         self.HOME_layout.addWidget(tool_box_window)
+        self.log_interaction("Toolbox button clicked - Toolbox window opened")
 
     def open_resources(self):
         self.clear_HOME_layout()
         resources_widget = ResourcesWindow()
         self.HOME_layout.addWidget(resources_widget)
+        self.log_interaction("Resources button clicked - Resources window opened")
+
+
+    def open_logging_window(self):
+        if self.logging_window is None:
+            self.logging_window = LoggingWindow()
+        self.logging_window.load_logs()
+        self.logging_window.show()
+        self.log_interaction("Opened Logging Window")
+
+
+    def log_interaction(self, message):
+        log_directory = "src/logs"
+        log_file_path = os.path.join(log_directory, "interactions.log")
+        
+        if not os.path.exists(log_directory):
+            os.makedirs(log_directory)
+
+        with open(log_file_path, "a") as log_file:
+            timestamp = QDateTime.currentDateTime().toString(Qt.DateFormat.ISODateWithMs)
+            log_entry = f"[{timestamp}] {message}\n"
+            log_file.write(log_entry)
+
+        if self.logging_window:
+            self.logging_window.log_interaction(message)
+
 
     def handle_button_click(self):
         pass  # Apply changes to my MainWindow
