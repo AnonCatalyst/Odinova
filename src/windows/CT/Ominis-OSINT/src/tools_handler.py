@@ -23,7 +23,7 @@ import logging
 # Set up error logger for tool errors
 error_logger = logging.getLogger('gfetcherror')
 error_logger.setLevel(logging.ERROR)
-error_handler = logging.FileHandler('src/gfetcherror.log')
+error_handler = logging.FileHandler('src/logs/gfetcherror.log')
 error_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
 error_logger.addHandler(error_handler)
 
@@ -31,7 +31,7 @@ error_logger.addHandler(error_handler)
 logging.getLogger('httpx').setLevel(logging.WARNING)
 
 # Configure logging to save to a file
-logging.basicConfig(level=logging.INFO, filename='src/gfetcherror.log', format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.INFO, filename='src/logs/gfetcherror.log', format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
 init(autoreset=True)  # Initialize colorama for colored output
