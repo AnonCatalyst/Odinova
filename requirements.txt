@@ -2,17 +2,17 @@
 PyQt6==6.5.0  # Specify the version you need
 numpy==1.24.2  # Example version, adjust as necessary
 markdown==3.4.1  # Example version, adjust as necessary
-gitpython==3.1.31  # Example version, adjust as necessary
+gitpython==3.1.41  # Example version, adjust as necessary
 beautifulsoup4==4.12.2  # Example version, adjust as necessary
 colorama==0.4.6  # Example version, adjust as necessary
 fake_useragent==1.1.1  # Example version, adjust as necessary
-requests==2.28.2  # Example version, adjust as necessary
+requests==2.31.0  # Example version, adjust as necessary
 google-search-results==2.4.0  # Example version, adjust as necessary
 httpx==0.24.0  # Example version, adjust as necessary
 tenacity==8.2.2  # Example version, adjust as necessary
 requests_html==0.10.0  # Example version, adjust as necessary
-aiohttp==3.8.1  # Example version, adjust as necessary
-urllib3==1.26.15  # Example version to avoid conflicts with dependencies
+aiohttp==3.8.6  # Example version, adjust as necessary
+urllib3==1.26.18  # Example version to avoid conflicts with dependencies
 asyncio==3.4.3  # Example version, adjust as necessary (Note: asyncio is built-in for Python 3.7+)
 lxml_html_clean==0.7.0  # Example version, adjust as necessary
 html_clean==0.8.1  # Example version, adjust as necessary
