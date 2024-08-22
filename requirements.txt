@@ -18,3 +18,4 @@ html_clean
 psutil
 aiohttp
 zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability
+anyio>=4.4.0 # not directly required, pinned by Snyk to avoid a vulnerability
