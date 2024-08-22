@@ -2,7 +2,7 @@
 PyQt6==6.5.0  # Specify the version you need
 numpy==1.24.2  # Example version, adjust as necessary
 markdown==3.4.1  # Example version, adjust as necessary
-gitpython==3.1.31  # Example version, adjust as necessary
+gitpython==3.1.41  # Example version, adjust as necessary
 beautifulsoup4==4.12.2  # Example version, adjust as necessary
 colorama==0.4.6  # Example version, adjust as necessary
 fake_useragent==1.1.1  # Example version, adjust as necessary
