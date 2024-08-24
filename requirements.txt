@@ -6,7 +6,7 @@ gitpython==3.1.41  # Example version, adjust as necessary
 beautifulsoup4==4.12.2  # Example version, adjust as necessary
 colorama==0.4.6  # Example version, adjust as necessary
 fake_useragent==1.1.1  # Example version, adjust as necessary
-requests==2.31.0  # Example version, adjust as necessary
+requests==2.32.2  # Example version, adjust as necessary
 google-search-results==2.4.0  # Example version, adjust as necessary
 httpx==0.24.0  # Example version, adjust as necessary
 tenacity==8.2.2  # Example version, adjust as necessary
