@@ -12,7 +12,7 @@ httpx==0.24.0  # Example version, adjust as necessary
 tenacity==8.2.2  # Example version, adjust as necessary
 requests_html==0.10.0  # Example version, adjust as necessary
 aiohttp==3.10.2  # Example version, adjust as necessary
-urllib3==1.26.18  # Example version to avoid conflicts with dependencies
+urllib3==1.26.19  # Example version to avoid conflicts with dependencies
 asyncio==3.4.3  # Example version, adjust as necessary (Note: asyncio is built-in for Python 3.7+)
 lxml_html_clean==0.7.0  # Example version, adjust as necessary
 html_clean==0.8.1  # Example version, adjust as necessary
