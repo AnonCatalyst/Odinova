@@ -19,3 +19,4 @@ html_clean==0.8.1  # Example version, adjust as necessary
 psutil==5.9.0  # Example version, adjust as necessary
 zipp==3.19.1  # Pinning to avoid vulnerability
 anyio==4.4.0  # Pinning to avoid vulnerability
+getrails
