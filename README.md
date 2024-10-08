@@ -1,6 +1,6 @@
 { **Odinova Digital Tiger:BETA:©️** 🕵️‍♂️ }
 
-> **UP-COMMING** `Under construction... OT-WINDOW UPDATE COMMING SOON!`
+> **UP-COMMING** `Under construction... OT-WINDOW UPDATE COMMING SOON!  paused`
 - **Finished**: ``CT-Window.(Custom Tools Window)``
 
 ## HOW TO INSTALL/RUN?
