@@ -1,7 +1,6 @@
 { **Odinova Digital Tiger:BETA:©️** 🕵️‍♂️ }
 
-> **UP-COMMING** `Under construction... OT-WINDOW UPDATE COMMING SOON!  paused`
-- **Finished**: ``CT-Window.(Custom Tools Window)``
+! **DISCONTINUED:** ``Please look forward to the development of InsightHub``
 
 ## HOW TO INSTALL/RUN?
 - ```git clone https://github.com/AnonCatalyst/Odinova && cd Odinova```
