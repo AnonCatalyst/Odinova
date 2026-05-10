@@ -127,8 +127,8 @@ def write_to_file(username, url, status_code, html_content, include_titles=True,
             results_file.write(f"Username: {username}\n")
             results_file.write(f"URL: {url}\n")
             results_file.write(f"Status Code: {status_code}\n")
+            soup = BeautifulSoup(html_content, 'html.parser') if (include_titles or include_descriptions) else None
             if include_titles:
-                soup = BeautifulSoup(html_content, 'html.parser')
                 title = soup.title.get_text(strip=True) if soup.title else "No title found"
                 results_file.write(f"Title: {title}\n")
             if include_descriptions:
