@@ -1,6 +1,6 @@
 from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton, QTextEdit, QHBoxLayout
 from PyQt6.QtCore import Qt
-from pydork.engine import SearchEngine
+import warnings
 
 class PyDorkWindow(QWidget):
     def __init__(self):
@@ -60,12 +60,36 @@ class PyDorkWindow(QWidget):
         layout.addWidget(self.result_area)
 
     def perform_search(self):
-        query = self.search_input.text()
-        if query:
+        query = self.search_input.text().strip()
+        if not query:
+            self.result_area.setText("Please enter a search query.")
+            return
+
+        try:
+            # pydork currently triggers a pkg_resources deprecation warning on import.
+            # Suppress only this known warning to keep the UI output clean.
+            with warnings.catch_warnings():
+                warnings.filterwarnings(
+                    "ignore",
+                    message=r"pkg_resources is deprecated as an API.*",
+                    category=UserWarning,
+                )
+                from pydork.engine import SearchEngine
+        except ModuleNotFoundError:
+            self.result_area.setText(
+                "PyDork dependency is not installed.\n"
+                "Install it with: pip install pydork==1.1.7"
+            )
+            return
+        except Exception as exc:
+            self.result_area.setText(f"Failed to initialize PyDork: {exc}")
+            return
+
+        try:
             search_engine = SearchEngine()
             search_engine.set('google')
             search_result = search_engine.search(query)
             results_text = "\n".join(f"{res}" for res in search_result)
-            self.result_area.setText(results_text)
-        else:
-            self.result_area.setText("Please enter a search query.")
+            self.result_area.setText(results_text or "No results returned.")
+        except Exception as exc:
+            self.result_area.setText(f"Search failed: {exc}")
