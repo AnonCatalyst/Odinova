@@ -19,3 +19,4 @@ psutil==7.0.0  # Python 3.13-compatible wheel
 zipp==3.19.1  # Pinning to avoid vulnerability
 anyio==4.4.0  # Pinning to avoid vulnerability
 getrails
+h11>=0.16.0 # not directly required, pinned by Snyk to avoid a vulnerability
