@@ -11,7 +11,7 @@ google-search-results==2.4.0  # Example version, adjust as necessary
 httpx==0.24.0  # Example version, adjust as necessary
 tenacity==8.2.2  # Example version, adjust as necessary
 requests_html==0.10.0  # Example version, adjust as necessary
-aiohttp==3.13.3  # Example version, adjust as necessary
+aiohttp==3.14.1  # Example version, adjust as necessary
 urllib3==1.26.19  # Example version to avoid conflicts with dependencies
 lxml_html_clean==0.4.4  # Latest published version
 html_clean==0.0.4  # Latest published version
